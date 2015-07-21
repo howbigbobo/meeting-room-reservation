@@ -4,6 +4,7 @@ Create table if not exists room
     name    	    TEXT,
 	address         TEXT,
     description     TEXT,
+	status			INTEGER,
     create_date     TEXT,
     update_date     TEXT
 )
