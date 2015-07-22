@@ -5,6 +5,6 @@ Create table if not exists user
 	password        TEXT,
     ip		        TEXT,
     mac             TEXT,
-    create_date     TEXT,
-    update_date     TEXT
+    createDate      TEXT,
+    updateDate      TEXT
 )

@@ -10,4 +10,8 @@ server.get(new RegExp("^/(.*)$"), function hello(req, res, match) {
 });
 */
 
+server.get("/hello",function(req,res,match){
+	return {hello: "World"};
+});
+
 server.listen(8080);

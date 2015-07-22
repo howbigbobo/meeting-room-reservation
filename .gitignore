@@ -5,3 +5,4 @@ tmp
 .DS_Store
 angular-phonecat-snapshots
 /app/npm-debug.log
+/npm-debug.log
