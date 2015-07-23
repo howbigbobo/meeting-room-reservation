@@ -37,12 +37,18 @@ exports.dateTime = function(date){
 
 Date.prototype.toDateString = function () {
 	var _date = this;
-	return _date.getFullYear() + '-' + _date.getMonth() + '-' + _date.getDate();
+	return _date.getFullYear() + '-' + (_date.getMonth() + 1) + '-' + _date.getDate();
 };
 
 Date.prototype.getMinutesInDay = function () {
 	var _date = this;
 	return _date.getHours() * 60 + _date.getMinutes();
+};
+
+Date.prototype.format = function (){
+	var _date = this;
+	return _date.getFullYear() + '-' + String(_date.getMonth() + 1).padLeft('0',2) + '-' + String(_date.getDate()).padLeft('0',2)
+		+ ' ' + String(_date.getHours()).padLeft('0',2) + ':' + String(_date.getMinutes()).padLeft('0',2) + ':' + String(_date.getSeconds()).padLeft('0',2);
 };
 
 String.prototype.padLeft = function(char,length) {

@@ -52,6 +52,7 @@ function innerConnect(callback) {
 }
 
 function setup(callback) {
+	return;
 	db.run(getCreateSql(),
 				function(err){
 					if (err){

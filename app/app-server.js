@@ -1,7 +1,7 @@
 //var server = require('../node_modules/node-router/lib/node-router').getServer();
 var server = require('node-router').getServer();
-
-var userService = require('./node/user-service').userService();
+var dateTime = require('./node/date-time');
+var dao = require('./node/dao').dao();
 
 /*
 server.get("/json", function (req, res, match) {
@@ -14,8 +14,7 @@ server.get(new RegExp("^/(.*)$"), function hello(req, res, match) {
 */
 
 server.get("/hello",function(req,res,match){
-	userService.add('bowen','1','1');
-	userService.add('bowen2','2','2');
+	dao.add("user", {name:"bowen",ip:123,mac:2222,createDate :(new Date()).format()});
 	userService.all(function(err,rows){
 		if(err) console.log(err);
 		else{
