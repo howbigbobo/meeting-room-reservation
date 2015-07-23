@@ -15,7 +15,7 @@ server.get(new RegExp("^/(.*)$"), function hello(req, res, match) {
 
 server.get("/hello",function(req,res,match){
 	dao.add("user", {name:"bowen",ip:123,mac:2222,createDate :(new Date()).format()});
-	userService.all(function(err,rows){
+	dao.find("user",function(err,rows){
 		if(err) console.log(err);
 		else{
 			if(rows && rows.length > 0){
