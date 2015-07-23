@@ -5,6 +5,6 @@ Create table if not exists room
 	address         TEXT,
     description     TEXT,
 	status			INTEGER,
-    create_date     TEXT,
-    update_date     TEXT
+    createDate      TEXT,
+    updateDate      TEXT
 )
