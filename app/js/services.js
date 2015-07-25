@@ -10,3 +10,14 @@ phonecatServices.factory('Phone', ['$resource',
       query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
     });
   }]);
+
+  
+var meetingRoomServices = angular.module('meetingRoomServices',['ngResource']);
+
+meetingRoomServices.factory('UserService',['$resource',
+	function($resource){
+		return $resource('user/:name',{},{
+			query:{method: 'GET', params:{name:""}}
+		});
+	}
+]);

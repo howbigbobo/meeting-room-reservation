@@ -11,6 +11,8 @@ var phonecatApp = angular.module('phonecatApp', [
   'phonecatServices'
 ]);
 
+phonecatApp.user = {id:0, name:""};
+
 phonecatApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
@@ -30,3 +32,27 @@ phonecatApp.config(['$routeProvider',
         redirectTo: '/phones'
       });
   }]);
+
+/*=============================*/
+  
+var meetingRoom = angular.module('meetingRoom',['ngRoute',"meetingRoomControllers","meetingRoomServices"]);
+meetingRoom.config(['$routeProvider',
+	function($routeProvider) {
+    $routeProvider.
+      when('/home', {
+	    //templateUrl: 'partials/home.html',
+        controller: 'Home'
+      }).
+      when('/sign-up', {
+        templateUrl: 'partials/sign-up.html',
+        controller: 'SignUp'
+      }).
+	  when('/meeting-room', {
+        templateUrl: 'partials/meeting-room.html',
+        controller: 'MeetingRoomHome'
+      }).
+      otherwise({
+        redirectTo: '/home'
+      });
+  }
+]);

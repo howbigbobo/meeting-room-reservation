@@ -26,3 +26,37 @@ phonecatControllers.controller('MeetingRoomreservation', ['$scope', 'Phone',
     $scope.phones = Phone.query();
     $scope.orderProp = 'age';
   }]);
+
+  /*============================*/
+var meetingRoomControllers = angular.module('meetingRoomControllers',[]);
+
+meetingRoomControllers.controller('Home',['$scope', '$routeParams', '$location', 'UserService',
+	function($scope,$routeParams,$location,UserService){
+		var user ={id:0,name:"bowen"};// UserService.query();
+		$scope.user = user;
+		if(!user || !user.id){
+			$location.path('sign-up');
+		}else{
+			$location.path('meeting-room');
+		}
+	}
+]);
+
+meetingRoomControllers.controller('SignUp',['$scope', '$routeParams', 'UserService',
+	function($scope,$routeParams,UserService){
+		
+	}
+]);
+
+meetingRoomControllers.controller('DoSignUp',['$scope', '$routeParams', 'UserService',
+	function($scope,$routeParams,UserService){
+		$scope.signup = function(){
+			console.log($scope.bindingName);
+		}
+}]);
+
+meetingRoomControllers.controller('MeetingRoomHome',['$scope', '$routeParams', 'UserService',
+	function($scope,$routeParams,UserService){
+		
+	}
+]);
