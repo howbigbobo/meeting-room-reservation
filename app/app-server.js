@@ -12,8 +12,17 @@ server.get(new RegExp("^/(.*)$"), function hello(req, res, match) {
   return "Hello " + (match || "World") + "!";
 });
 */
-
+var fs = require('fs');
 server.get("/hello",function(req,res,match){
+
+	console.log("--------------------------------");
+
+	var ip = req.headers['x-forwarded-for'] ||
+		req.connection.remoteAddress ||
+		req.socket.remoteAddress ||
+		req.connection.socket.remoteAddress;
+	console.log(ip);
+
 	dao.add("user", {name:"bowen",ip:123,mac:2222,createDate :(new Date()).format()});
 	dao.find("user",function(err,rows){
 		if(err) console.log(err);

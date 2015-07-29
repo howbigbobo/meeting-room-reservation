@@ -200,6 +200,11 @@ p.copyright {
     font-style: italic;
 }
 
+#room-main {
+	margin-top: -80px;
+	color: #eee;
+}
+
 .opacity-60 {
 	filter:alpha(Opacity=60);
 	-moz-opacity:0.6;
@@ -214,6 +219,10 @@ p.copyright {
 
 .bg-color-000 {
 	background-color:#000;
+}
+
+.bg-color-eee {
+	background-color:#eee;
 }
 
 .padding-30 {
