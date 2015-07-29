@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" ng-app="meetingRoom1">
+<head>
+  <meta charset="utf-8">
+  <title>TUV-SUD</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+  
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">会议室预订系统</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <div class="nav navbar-nav navbar-right" id="welcome">
+            欢迎- <span ng-bind="user.name"></span>
+          </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	<div id="header">
+		<div class="container">
+			<div class="row" ng-view>
+				<div id="room-main" class="col-lg-12 opacity-80 bg-color-000 padding-30">
+				<div class="room-header">
+					date: 2015-07-25
+				</div>
+				<div class="room-contain">
+					<table class="table">
+						<thead>
+							<th>401</th>
+							<th>402</th>
+							<th>403</th>
+							<th>404</th>
+							<th>500</th>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a href="javascript:void(0);"  data-toggle="tooltip" data-placement="bottom" data-html="true" title="预订人：bowen\n预订时间：2015-07-24 14:10:21">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);"  data-toggle="popover" data-placement="bottom" title="预订人：bowen<br/>预订时间：2015-07-24 14:10:21">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);"  data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+								<td><a href="javascript:void(0);">8:00-8:30</a></td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
