@@ -11,18 +11,22 @@ var controller = require("./node/controller").controller();
  return "Hello " + (match || "World") + "!";
  });
  */
-var fs = require('fs');
-console.log(controller);
-server.get("/user/get", function (req, res, match) {
-   var obj = controller.getUser(req,res,match);
-    console.log(obj);
-    return {};
-});
+
+//user
+server.get("/user/get", controller.getUser);
 server.get("/user/login/", controller.login);
 server.get("/user/add", controller.addUser);
+server.get("/user/update", controller.updateUser);
 
-server.get("/user/get1", function (req, res, match) {
-    return {user: 1};
-});
+//room
+server.get("/room/add", controller.getUser);
+server.get("/room/update", controller.getUser);
+server.get("/room/delete", controller.getUser);
+server.get("/room/all", controller.getUser);
+
+//reservation
+server.get("/reservation/add", controller.getUser);
+server.get("/reservation/delete", controller.getUser);
+server.get("/reservation/list", controller.getUser);
 
 server.listen(8080);

@@ -48,10 +48,15 @@ exports.userService = function () {
         });
     };
 
+    function encryptPwd(user) {
+        if (user && user.password) user.password = "******";
+    }
+
     me.getUserByIp = function (ip, callback) {
         if (!ip) return callback(null, null);
         dao.find(userModel.table, {ip: ip}, function (err, rows) {
             var row = rows && rows.length > 0 && rows[0];
+            encryptPwd(row);
             callback(err, row);
         });
     };
@@ -60,7 +65,16 @@ exports.userService = function () {
         if (!name || !pwd) return callback(null, null);
         dao.find(userModel.table, {name: name, password: pwd}, function (err, rows) {
             var row = rows && rows.length > 0 && rows[0];
+            encryptPwd(row);
             callback(err, row);
+        });
+    };
+
+    me.updateUser = function (name, ip) {
+        me.getUserByIp(ip, function (err, user) {
+            if (!err && user && user.id) {
+                dao.update(userModel.table, {name: name, updateDate: (new Date()).format()}, {id: user.id});
+            }
         });
     };
 

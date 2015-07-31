@@ -40,7 +40,7 @@ exports.dao = function () {
         }
         var where = buildWhere(obj);
         logger.info(" find table= " + table);
-        logger.info(" find where= " + where);
+        logger.info(" find where= " + where.where);
         db.all("SELECT * FROM " + table + " " + where.where, where.param, function (err, rows) {
             logger.info(" find table= " + table);
             logger.info("find err=" + err);
