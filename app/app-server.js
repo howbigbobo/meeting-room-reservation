@@ -19,14 +19,15 @@ server.get("/user/add", controller.addUser);
 server.get("/user/update", controller.updateUser);
 
 //room
-server.get("/room/add", controller.getUser);
-server.get("/room/update", controller.getUser);
-server.get("/room/delete", controller.getUser);
-server.get("/room/all", controller.getUser);
+server.get("/room/add", controller.addRoom);
+server.get("/room/update", controller.updateRoom);
+server.get("/room/delete", controller.deleteRoom);
+server.get("/room/all", controller.allRoom);
 
 //reservation
-server.get("/reservation/add", controller.getUser);
-server.get("/reservation/delete", controller.getUser);
-server.get("/reservation/list", controller.getUser);
+server.get("/reservation/add", controller.addReservation);
+server.get("/reservation/delete", controller.deleteReservation);
+server.get("/reservation/date", controller.findByDate);
+server.get("/reservation/exist", controller.findByDate);
 
 server.listen(8080);

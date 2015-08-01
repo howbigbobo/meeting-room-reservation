@@ -21,7 +21,7 @@ exports.Room = function () {
             name: "",
             address: "",
             description: "",
-            status: "", // A (active), D(disable)
+            status: "A", // A (active), D(disable)
             createDate: "",
             updateDate: ""
         }

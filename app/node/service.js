@@ -1,6 +1,7 @@
 var dao = require("./dao").dao();
 var model = require("./model");
 var dateTime = require('./date-time').dateTime;
+var logger = require('./logger').getLogger("service");
 var userModel = model.User();
 var roomModel = model.Room();
 var reservationModel = model.Reservation();
@@ -23,8 +24,27 @@ exports.roomService = function () {
         });
     };
 
+    me.updateRoom = function (id, name, addr, description, status) {
+        var room = {};
+        if (name) room.name = name;
+        if (addr) room.address = addr;
+        if (description) room.description = description;
+        if (status) room.status = status;
+        room.updateDate = (new Date()).format();
+        logger.info("update room", room);
+        dao.update(roomModel.table, room, {id: id});
+    };
+
+    me.getRoomById = function (id, callback) {
+        dao.find(roomModel.table, {status: 'A', id: id}, function (err, rows) {
+            var room = null;
+            if (rows && rows.length > 0)room = rows[0];
+            if (callback) callback(err, room);
+        });
+    };
+
     me.allRooms = function (callback) {
-        dao.find(roomModel.table, {}, function (err, rows) {
+        dao.find(roomModel.table, {status: 'A'}, function (err, rows) {
             callback(err, rows);
         });
     };
@@ -109,16 +129,18 @@ exports.reservationService = function () {
         });
     };
 
-    me.existReservation = function (date, startMinute, endMinute, callback) {
-        me.findByDate(date, function (err, rows) {
+    me.existReservation = function (roomId, date, startMinute, endMinute, callback) {
+        date = new dateTime(date);
+        dao.find(reservationModel.table, {roomId: roomId, date: date.date}, function (err, rows) {
             if (err) callback(err, false);
             else {
                 if (!rows || rows.length == 0) callback(null, false);
-                var exist = false;
+                var exist = {exist: false, reservation: null};
                 for (var i = 0; i < rows.length; i++) {
                     var es = rows[i].startMinute, ee = rows[i].endMinute;
                     if (!(ee < startMinute) && !(es > endMinute)) {
-                        exist = true;
+                        exist.exist = true;
+                        exist.reservation = rows[i];
                         break;
                     }
                 }
