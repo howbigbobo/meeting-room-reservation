@@ -35,6 +35,7 @@ exports.Reservation = function () {
             id: 0,
             userId: "",
             userName: "",
+            ip:"",
             roomId: "",
             roomName: "",
             date: "",

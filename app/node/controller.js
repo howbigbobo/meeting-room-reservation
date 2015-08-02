@@ -4,6 +4,7 @@ var roomService = service.roomService();
 var reservationService = service.reservationService();
 var clientHelper = require('./client-helper');
 var logger = require("./logger").getLogger("controller");
+var userIdCookieName = "_m_uid";
 
 exports.controller = function () {
     var me = {};
@@ -14,39 +15,86 @@ exports.controller = function () {
     }
 
     me.getUser = function (req, res, match) {
-        console.log("getUser: in, ");
-        console.log(match);
         var ip = clientHelper.getIp(req).ip;
-        console.log(ip);
-        userService.getUserByIp(ip, function (err, user) {
+        var cookie = clientHelper.cookie(req, res);
+        var uid = cookie[userIdCookieName];
+        if (!uid) {
+            responseJson(res, {});
+            return;
+        }
+        logger.info('get user: ip=' + ip, 'uid=' + uid);
+        userService.getUserById(cookie[userIdCookieName], function (err, user) {
             if (err || !user) {
-                console.log("getUser error=" + err);
-                logger.info("user=");
-                logger.info(user);
+                logger.info('user empty: error=', err);
                 responseJson(res, {});
-                return;
             } else {
-                logger.info("user=");
-                logger.info(user);
+                logger.info('get user=', user);
                 responseJson(res, user);
             }
         });
     };
 
     me.login = function (req, res, match) {
-        logger.info("login: ", req.query);
+
     };
 
     me.addUser = function (req, res, match) {
         logger.info("addUser: ", req.query);
-        userService.addUser(req.query.name, null, clientHelper.getIp(req).ip, "");
-        return {success: true};
+        if (!req.query || !req.query.name) {
+            responseJson(res, {success: false, message: "name required"});
+            return;
+        }
+        var user = {};
+        user.name = req.query.name;
+        user.ip = clientHelper.getIp(req).ip;
+        var cookie = clientHelper.cookie(req, res);
+        var uid = cookie[userIdCookieName];
+        if (uid) {
+            userService.getUserById(uid, function (err, exist) {
+                if (err) {
+                    logger.info('get user id error.' + uid, err);
+                    responseJson(res, {success: false, message: 'error.' + err})
+                } else if (!exist) {
+                    addUser(user);
+                } else {
+                    responseJson(res, {success: false, message: 'user exist', user: exist});
+                }
+            });
+        } else {
+            addUser(user);
+        }
+
+        function addUser(user) {
+            userService.addUser(user, function (err, newUser) {
+                if (err || !newUser) {
+                    responseJson(res, {success: false, message: "error." + err});
+                } else {
+                    var cookie = clientHelper.cookie(req, res);
+                    if (!req.query.notcookie)  cookie.setCookie(userIdCookieName, newUser._id, 2 * 365 * 24 * 60 * 60, "/");
+                    responseJson(res, {success: true, user: newUser});
+                }
+            });
+        }
     };
 
     me.updateUser = function (req, res, match) {
-        logger.info("addUser: ", req.query);
-        userService.updateUser(req.query.name, clientHelper.getIp(req).ip, "");
-        return {success: true};
+        logger.info("update user: ", req.query);
+        var uid = req.query.id || clientHelper.cookie(req, res)[userIdCookieName];
+        if (!req.query || !uid) {
+            responseJson(res, {success: false, message: "id required"});
+            return;
+        }
+        var user = {};
+        if (req.query.name) user.name = req.query.name;
+        if (!req.query.notip)  user.ip = clientHelper.getIp(req).ip;
+        userService.updateUser(uid, user, function (err, updateCount) {
+            if (err || !updateCount) {
+                logger.info("update failed.", err)
+                responseJson(res, {success: false, count: updateCount})
+            } else {
+                responseJson(res, {success: true, count: updateCount});
+            }
+        });
     };
 
     //room
@@ -55,19 +103,38 @@ exports.controller = function () {
             responseJson(res, {success: false, message: "name required."});
             return;
         }
+        var room = {name: req.query.name, address: req.query.addr, description: req.query.description};
 
-        roomService.addRoom(req.query.name, req.query.addr, req.query.description);
-        responseJson(res, {success: true});
+        roomService.addRoom(room, function (err, newRoom) {
+            if (err || !newRoom) {
+                logger.info('add room failed,error=', err);
+                responseJson(res, {success: false});
+            } else {
+                responseJson(res, {success: true, room: newRoom});
+            }
+        });
     };
 
     me.updateRoom = function (req, res, match) {
-        if (!req.query || !req.query.id || !req.query.name) {
-            responseJson(res, {success: false, message: "id,name required."});
+        if (!req.query || !req.query.id) {
+            responseJson(res, {success: false, message: "id required."});
             return;
         }
 
-        roomService.updateRoom(req.query.id, req.query.name, req.query.addr, req.query.description, req.query.status);
-        responseJson(res, {success: true});
+        var room = {};
+        if (req.query.name) room.name = req.query.name;
+        if (req.query.addr) room.address = req.query.addr;
+        if (req.query.description) room.description = req.query.description;
+        if (req.query.status) room.status = req.query.status;
+
+        roomService.updateRoom(req.query.id, room, function (err, count) {
+            if (err || !count) {
+                if (err) logger.info("update room err,", err);
+                responseJson(res, {success: false});
+            } else {
+                responseJson(res, {success: count > 0, count: count});
+            }
+        });
     };
 
     me.deleteRoom = function (req, res, match) {
@@ -75,9 +142,14 @@ exports.controller = function () {
             responseJson(res, {success: false, message: "id required."});
             return;
         }
-
-        roomService.updateRoom(req.query.id, null, null, null, 'D');
-        responseJson(res, {success: true});
+        roomService.updateRoom(req.query.id, {status: 'D'}, function (err, count) {
+            if (err) {
+                if (err) logger.info("update room err,", err);
+                responseJson(res, {success: false});
+            } else {
+                responseJson(res, {success: count > 0, count: count});
+            }
+        });
     };
 
     me.allRoom = function (req, res, match) {
@@ -92,7 +164,6 @@ exports.controller = function () {
     };
 
     //reservation
-
     me.findByDate = function (req, res, match) {
         if (!req.query || !req.query.date) {
             responseJson(res, {success: false, message: "date required."});
@@ -118,21 +189,29 @@ exports.controller = function () {
             return;
         }
 
+        var cookie = clientHelper.cookie(req, res);
+        var uid = cookie[userIdCookieName];
+
         var ip = clientHelper.getIp(req).ip;
-        userService.getUserByIp(ip, function (err, user) {
-            if (err || !user || !user.id) {
+        userService.getUserById(uid, function (err, user) {
+            if (err || !user || !user.name) {
                 logger.info('no user to reservation.', ip, "err:", err);
                 responseJson(res, {success: false, message: "not exist user."});
                 return;
             }
             roomService.getRoomById(req.query.roomId, function (err, room) {
-                if (err || !room || !room.id) {
+                if (err || !room || !room.name) {
                     logger.info('no room to reservation.', req.query.roomId, "err:", err);
                     responseJson(res, {success: false, message: "not exist room."});
                     return;
                 }
                 reservationService.existReservation(req.query.roomId, req.query.date, req.query.start, req.query.end
                     , function (err, exist) {
+                        if (err) {
+                            logger.info('exsit reservation error.', err);
+                            responseJson(res, {success: false, message: "error." + err});
+                            return;
+                        }
                         logger.info("is reservation exist?", exist);
                         if (exist && exist.exist) {
                             logger.info('reservation exist. roomId', req.query.roomId, "err:", err);
@@ -143,8 +222,15 @@ exports.controller = function () {
                             });
                         } else {
                             reservationService.addReservation(user, room, req.query.date
-                                , Number(req.query.start), Number(req.query.end));
-                            responseJson(res, {success: true});
+                                , Number(req.query.start), Number(req.query.end), function (err, newR) {
+                                    if (err) logger.info('add reservation error.', err);
+                                    if (err || !newR) {
+                                        responseJson(res, {success: false});
+                                    } else {
+                                        logger.info('add reservation success');
+                                        responseJson(res, {success: true, reservation: newR});
+                                    }
+                                });
                         }
                     });
             });
@@ -156,8 +242,13 @@ exports.controller = function () {
             responseJson(res, {success: false, message: "id required."});
             return;
         }
-        reservationService.deleteReservation(req.query.id);
-        responseJson(res, {success: true});
+        reservationService.deleteReservation(req.query.id, function (err, count) {
+            if (err) {
+                logger.info('delete reservation error.' + req.query.id, err);
+            } else {
+                responseJson(res, {success: count > 0, count: count});
+            }
+        });
     };
 
     return me;

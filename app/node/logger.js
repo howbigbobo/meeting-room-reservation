@@ -6,9 +6,9 @@ exports.getLogger = function (name) {
         var ss = me.name + ": ";
         for (var i = 0; i < arguments.length; i++) {
             if (typeof arguments[i] === "object") {
-                ss += JSON.stringify(arguments[i]) + "; ";
+                ss += JSON.stringify(arguments[i]) + " ";
             } else {
-                ss += arguments[i] + "; "
+                ss += arguments[i] + " ";
             }
         }
         util.log(ss);

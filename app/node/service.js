@@ -1,52 +1,31 @@
-var dao = require("./dao").dao();
+var db = require("./dao").db();
 var model = require("./model");
 var dateTime = require('./date-time').dateTime;
 var logger = require('./logger').getLogger("service");
-var userModel = model.User();
-var roomModel = model.Room();
-var reservationModel = model.Reservation();
 
 exports.roomService = function () {
     var me = {};
 
-    me.addRoom = function (name, addr, description) {
-        var room = {
-            name: name,
-            address: addr,
-            description: description,
-            status: 'A',
-            createDate: (new Date()).format()
-        };
-        dao.add(roomModel.table, room, function (err) {
-            if (err) {
-                console.log(err);
-            }
-        });
+    me.addRoom = function (room, callback) {
+        room.status = 'A';
+        room.createDate = (new Date()).format();
+        logger.info('add room = ', room);
+        db.rooms.insert(room, callback);
     };
 
-    me.updateRoom = function (id, name, addr, description, status) {
-        var room = {};
-        if (name) room.name = name;
-        if (addr) room.address = addr;
-        if (description) room.description = description;
-        if (status) room.status = status;
+    me.updateRoom = function (id, room, callback) {
         room.updateDate = (new Date()).format();
-        logger.info("update room", room);
-        dao.update(roomModel.table, room, {id: id});
+        logger.info('update room = ', room, ' id=', id);
+        db.rooms.update({_id: id}, {$set: room}, callback);
     };
 
     me.getRoomById = function (id, callback) {
-        dao.find(roomModel.table, {status: 'A', id: id}, function (err, rows) {
-            var room = null;
-            if (rows && rows.length > 0)room = rows[0];
-            if (callback) callback(err, room);
-        });
+        logger.info('find room, id =', id);
+        db.rooms.findOne({_id: id, status: 'A'}, callback);
     };
 
     me.allRooms = function (callback) {
-        dao.find(roomModel.table, {status: 'A'}, function (err, rows) {
-            callback(err, rows);
-        });
+        db.rooms.find({status: 'A'}, callback);
     };
 
     return me;
@@ -54,48 +33,37 @@ exports.roomService = function () {
 
 exports.userService = function () {
     var me = {};
-    me.addUser = function (name, pwd, ip, mac) {
-        var user = {name: name, password: pwd, ip: ip, mac: mac, createDate: (new Date()).format()};
-
-        me.getUserByIp(ip, function (err, row) {
-            if (!row) {
-                dao.add(userModel.table, user, function (err) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-            }
-        });
+    me.addUser = function (user, callback) {
+        user.createDate = (new Date()).format();
+        logger.info('add user=', user);
+        db.users.insert(user, callback);
     };
 
     function encryptPwd(user) {
         if (user && user.password) user.password = "******";
     }
 
-    me.getUserByIp = function (ip, callback) {
-        if (!ip) return callback(null, null);
-        dao.find(userModel.table, {ip: ip}, function (err, rows) {
-            var row = rows && rows.length > 0 && rows[0];
-            encryptPwd(row);
-            callback(err, row);
+    me.getUserById = function (id, callback) {
+        if (!id) return callback(null, null);
+        logger.info('get user id=', id);
+        db.users.findOne({_id: id}, function (err, doc) {
+            encryptPwd(doc);
+            if (callback)  callback(err, doc);
         });
     };
 
     me.getUserByPwd = function (name, pwd, callback) {
         if (!name || !pwd) return callback(null, null);
-        dao.find(userModel.table, {name: name, password: pwd}, function (err, rows) {
-            var row = rows && rows.length > 0 && rows[0];
-            encryptPwd(row);
-            callback(err, row);
+        logger.info('get user name,pwd=', name, pwd);
+        db.users.findOne({name: name, password: pwd}, function (err, doc) {
+            encryptPwd(doc);
+            if (callback)  callback(err, doc);
         });
     };
 
-    me.updateUser = function (name, ip) {
-        me.getUserByIp(ip, function (err, user) {
-            if (!err && user && user.id) {
-                dao.update(userModel.table, {name: name, updateDate: (new Date()).format()}, {id: user.id});
-            }
-        });
+    me.updateUser = function (id, user, callback) {
+        logger.info('update user,id=' + id, user);
+        db.users.update({_id: id}, {$set: user}, callback);
     };
 
     return me;
@@ -103,42 +71,42 @@ exports.userService = function () {
 
 exports.reservationService = function () {
     var me = {};
-    me.addReservation = function (user, room, date, start, end) {
-        date = dateTime(date);
+    me.addReservation = function (user, room, date, start, end, callback) {
+        date = dateTime(date).date;
         var reservation = {
-            userId: user.id, userName: user.name, roomId: room.id, roomName: room.name
-            , date: dateTime(date).date, startMinute: start, endMinute: end, createDate: (new Date()).format()
+            userId: user._id, userName: user.name, ip: user.ip, roomId: room._id, roomName: room.name
+            , date: date, startMinute: start, endMinute: end, createDate: (new Date()).format()
         };
-        dao.add(reservationModel.table, reservation, function (err) {
-            if (err) {
-                console.log(err);
-            }
-        });
+        logger.info('add reservation=', reservation);
+        db.reservations.insert(reservation, callback);
     };
 
     me.findByDate = function (date, callback) {
-        date = dateTime(date);
-        dao.find(reservationModel.table, {date: date.date}, function (err, rows) {
-            callback(err, rows);
-        });
+        date = dateTime(date).date;
+        logger.info('find by date=', date);
+        db.reservations.find({date: date}, callback);
     };
 
-    me.deleteReservation = function (reservationId) {
-        dao.delete(reservationModel.table, {id: reservationId}, function (err) {
-            if (err) console.log(err);
-        });
+    me.deleteReservation = function (reservationId, callback) {
+        logger.info('delete reservation, id=', reservationId);
+        db.reservations.remove({_id: reservationId}, callback);
     };
 
     me.existReservation = function (roomId, date, startMinute, endMinute, callback) {
         date = new dateTime(date);
-        dao.find(reservationModel.table, {roomId: roomId, date: date.date}, function (err, rows) {
+        logger.info("exist reservation : roomId=" + roomId, ",date=" + date.date)
+        db.reservations.find({roomId: roomId, date: date.date}, function (err, rows) {
             if (err) callback(err, false);
             else {
-                if (!rows || rows.length == 0) callback(null, false);
+                if (!rows || rows.length == 0) {
+                    callback(null, false);
+                    return;
+                }
                 var exist = {exist: false, reservation: null};
                 for (var i = 0; i < rows.length; i++) {
+                    console.log(rows[i]);
                     var es = rows[i].startMinute, ee = rows[i].endMinute;
-                    if (!(ee < startMinute) && !(es > endMinute)) {
+                    if (!(ee <= startMinute) && !(es >= endMinute)) {
                         exist.exist = true;
                         exist.reservation = rows[i];
                         break;

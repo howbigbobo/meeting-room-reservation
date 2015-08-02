@@ -1,141 +1,31 @@
 var logger = require("./logger").getLogger("dao");
-var db = require('./sqlite-db').connect();
-//http://www.cnblogs.com/EricaMIN1987_IT/p/3654826.html
-exports.dao = function () {
+var DataStore = require('nedb');
+var dbDir = "./data";
+var db = {};
 
-    function execute(sql, param, callback) {
-        logger.info("sql= " + sql);
-        logger.info("param= " + param);
-        db.run(sql, param,
-            function (error) {
-                if (error) {
-                    logger.info('FAIL on execute ' + error);
-                    logger.info(sql);
-                    logger.info(param);
-                    if (callback) callback(error);
-                } else {
-                    if (callback) callback(null);
-                }
-            });
-    };
-
-    function add(table, obj, callback) {
-        var ins = buildInsert(table, obj);
-        execute(ins.sql, ins.param, callback);
+exports.db = function () {
+    if (db.initial) {
+        return db;
     }
+    db.initial = true;
 
-    function update(table, obj, whereObj, callback) {
-        var ins = buildUpdate(table, obj, whereObj);
-        execute(ins.sql, ins.param, callback);
-    }
+    db.users = new DataStore({filename: dbDir + '/users.nedb', autoload: true});
+    db.users.loadDatabase(function (err) {
+        logger.info('db.users loaded.', err);
+    });
 
-    function del(table, obj, callback) {
-        var ins = buildDelete(table, obj);
-        execute(ins.sql, ins.param, callback);
-    }
+    db.rooms = new DataStore({filename: dbDir + '/rooms.nedb', autoload: true});
+    db.rooms.loadDatabase(function (err) {
+        logger.info('db.rooms loaded.', err);
+    });
 
-    function find(table, obj, callback) {
-        if (typeof(obj) === "function") {
-            callback = obj;
-        }
-        var where = buildWhere(obj);
-        logger.info(" find table= " + table);
-        logger.info(" find where= " + where.where);
-        db.all("SELECT * FROM " + table + " " + where.where, where.param, function (err, rows) {
-            logger.info(" find table= " + table);
-            logger.info("find err=" + err);
-            logger.info("find rows=" + rows);
-            callback(err, rows);
-        });
-    }
+    db.reservations = new DataStore({filename: dbDir + '/reservations.nedb', autoload: true});
+    db.reservations.loadDatabase(function (err) {
+        logger.info('db.reservations loaded.', err);
+    });
+    db.reservations.ensureIndex({fieldName: 'date', unique: false}, function (err) {
+        logger.info('db.reservations.dateIndex created', err);
+    });
 
-    return {
-        add: add,
-        update: update,
-        delete: del,
-        find: find
-    };
+    return db;
 };
-
-function buildInsert(table, obj) {
-    var str1 = [];
-    str1.push("INSERT INTO ");
-    str1.push(table);
-    str1.push('(');
-
-    var str2 = [];
-    var param = [];
-    for (var pro in obj) {
-        str1.push(pro);
-        str1.push(',');
-        str2.push('?');
-        str2.push(',');
-        param.push(obj[pro]);
-    }
-    str1.pop();
-    str2.pop();
-    str1.push(') VALUES (');
-    str1.push(str2.join(''));
-    str1.push(')');
-
-    return {
-        sql: str1.join(' '),
-        param: param
-    };
-}
-
-function buildUpdate(table, obj, whereObj) {
-    var where = buildWhere(whereObj);
-    var str1 = [];
-    var param = [];
-    str1.push("UPDATE " + table + " SET ");
-    for (var pro in obj) {
-        str1.push(pro + '=? ');
-        str1.push(',');
-        param.push(obj[pro]);
-    }
-    str1.pop();
-    str1.push(where.where);
-    param = param.concat(where.param);
-    return {
-        sql: str1.join(' '),
-        param: param
-    }
-}
-
-function buildDelete(table, obj) {
-    var str1 = [];
-    str1.push("DELETE FROM " + table);
-    var where = buildWhere(obj);
-    str1.push(where.where);
-
-    return {
-        sql: str1.join(' '),
-        param: where.param
-    };
-}
-
-function buildWhere(obj) {
-    var result = {where: "", param: []};
-    if (!obj || typeof(obj) !== "object") return result;
-
-    var str1 = [];
-    str1.push(" WHERE ");
-    var param = [];
-    var hasProperty = false;
-    for (var pro in obj) {
-        str1.push(pro + '=?');
-        str1.push(' AND ');
-        param.push(obj[pro]);
-        hasProperty = true;
-    }
-    if (hasProperty) {
-        str1.pop();
-        return {
-            where: str1.join(''),
-            param: param
-        };
-    } else {
-        return result;
-    }
-}
