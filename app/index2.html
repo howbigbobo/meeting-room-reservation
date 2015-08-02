@@ -68,7 +68,9 @@
                 {{each reservations as cols}}
                 <tr>
                     {{each cols as reservation index}}
-                    <td><a href="javascript:void(0);" class="reservation-link" {{if !reservation.enable}}disabled{{/if}}"
+                    <td><a href="javascript:void(0);" class="reservation-link {{if !reservation.enable}}disabled{{/if}}
+                        {{if reservation.isReserved}}reserved{{/if}}
+                        {{if reservation.isReserved&&reservation.canRevert}}canrevert{{/if}}"
                         roomId="{{rooms[index]._id}}"
                         start="{{reservation.start}}" end="{{reservation.end}}"
                         canRevert="{{if reservation.canRevert}}true{{/if}}"

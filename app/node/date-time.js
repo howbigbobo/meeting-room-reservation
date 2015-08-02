@@ -22,12 +22,14 @@ exports.dateTime = function (date, intervalMinute) {
         var startMinute = startTime.getMinutesInDay();
         var endMinute = endTime.getMinutesInDay();
         var ranges = [];
+        var isToday = time.toDateString() === now.toDateString();
+        var isTomorrow = getDate(time.toDateString()) > getDate(now.toDateString());
         for (var i = startMinute; i <= endMinute; i += intervalMinute) {
             var range = {};
             range.start = i;
             range.end = i + intervalMinute - 1;
             range.text = toTimeString(range.start, range.end + 1);
-            range.enable = range.start >= nowMinute - intervalMinute;
+            range.enable = isTomorrow || (isToday && range.start >= nowMinute - intervalMinute);
             ranges.push(range);
         }
         return ranges;

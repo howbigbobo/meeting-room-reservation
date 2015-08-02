@@ -25,3 +25,61 @@
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:22:38","_id":"uaeTRi0JYv4kZ67H"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:33:57","_id":"xEJiFP3yWmVqDf3F"}
 {"$$indexCreated":{"fieldName":"date","unique":false,"sparse":false}}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":540,"endMinute":599,"createDate":"2015-08-02 20:58:29","_id":"bCWVQIKgnOQkpdVW"}
+{"$$deleted":true,"_id":"bCWVQIKgnOQkpdVW"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":540,"endMinute":599,"createDate":"2015-08-02 21:00:00","_id":"bJVPGzICBMDZBcrU"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":600,"endMinute":659,"createDate":"2015-08-02 21:00:48","_id":"ga2MQJ9OiEgunT7X"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":660,"endMinute":719,"createDate":"2015-08-02 21:00:49","_id":"GmOHLbkhVIgZcmFU"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":720,"endMinute":779,"createDate":"2015-08-02 21:00:49","_id":"CPmyrUTU7G87yfTf"}
+{"userId":"j0iIrKyKFrTuckzM","userName":"bowen2","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-3","startMinute":780,"endMinute":839,"createDate":"2015-08-02 21:03:13","_id":"F5VYHrhFLOqqIrlF"}
+{"userId":"j0iIrKyKFrTuckzM","userName":"bowen2","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-3","startMinute":840,"endMinute":899,"createDate":"2015-08-02 21:03:14","_id":"crk4pn4KytLS7jAv"}
+{"$$deleted":true,"_id":"CPmyrUTU7G87yfTf"}
+{"$$deleted":true,"_id":"GmOHLbkhVIgZcmFU"}
+{"$$deleted":true,"_id":"crk4pn4KytLS7jAv"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":720,"endMinute":779,"createDate":"2015-08-02 21:04:36","_id":"eH3B5kFd2SYinXcP"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":660,"endMinute":719,"createDate":"2015-08-02 21:04:42","_id":"kSXkN4MYLmDsqLmT"}
+{"$$deleted":true,"_id":"kSXkN4MYLmDsqLmT"}
+{"$$deleted":true,"_id":"eH3B5kFd2SYinXcP"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":660,"endMinute":719,"createDate":"2015-08-02 21:04:44","_id":"tj8Y0TQqgz4YqIFL"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":720,"endMinute":779,"createDate":"2015-08-02 21:04:44","_id":"4FvbULaSj1WeSd74"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-3","startMinute":720,"endMinute":779,"createDate":"2015-08-02 21:04:49","_id":"ADyWD2W7eY57qycz"}
+{"$$deleted":true,"_id":"4FvbULaSj1WeSd74"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":720,"endMinute":779,"createDate":"2015-08-02 21:06:52","_id":"YWbOpYvNkXMkjbnE"}
+{"$$deleted":true,"_id":"YWbOpYvNkXMkjbnE"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":720,"endMinute":779,"createDate":"2015-08-02 21:06:53","_id":"sTpZrjj7OIzG1Cgq"}
+{"$$deleted":true,"_id":"sTpZrjj7OIzG1Cgq"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":720,"endMinute":779,"createDate":"2015-08-02 21:06:57","_id":"pBbvYVqSsipNGw0K"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-3","startMinute":1020,"endMinute":1079,"createDate":"2015-08-02 21:07:06","_id":"heL9KpDaPXNkQnOD"}
+{"userId":"j0iIrKyKFrTuckzM","userName":"bowen2","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-3","startMinute":960,"endMinute":1019,"createDate":"2015-08-02 21:07:14","_id":"ITiiwHNgbXwOnudO"}
+{"userId":"j0iIrKyKFrTuckzM","userName":"bowen2","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-3","startMinute":900,"endMinute":959,"createDate":"2015-08-02 21:07:15","_id":"vZRfLYZE0NNFSKRI"}
+{"userId":"j0iIrKyKFrTuckzM","userName":"bowen2","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-3","startMinute":840,"endMinute":899,"createDate":"2015-08-02 21:07:16","_id":"19q52bJQa3NOjS2y"}
+{"$$deleted":true,"_id":"vZRfLYZE0NNFSKRI"}
+{"userId":"j0iIrKyKFrTuckzM","userName":"bowen2","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-3","startMinute":900,"endMinute":959,"createDate":"2015-08-02 21:07:17","_id":"gMegBOhNtT2BB2E8"}
+{"$$deleted":true,"_id":"ADyWD2W7eY57qycz"}
+{"$$deleted":true,"_id":"heL9KpDaPXNkQnOD"}
+{"$$deleted":true,"_id":"pBbvYVqSsipNGw0K"}
+{"$$deleted":true,"_id":"tj8Y0TQqgz4YqIFL"}
+{"$$deleted":true,"_id":"ga2MQJ9OiEgunT7X"}
+{"$$deleted":true,"_id":"bJVPGzICBMDZBcrU"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":540,"endMinute":599,"createDate":"2015-08-02 21:09:34","_id":"oOfTSaXXByWEH6Lc"}
+{"$$deleted":true,"_id":"oOfTSaXXByWEH6Lc"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":540,"endMinute":599,"createDate":"2015-08-02 21:09:47","_id":"VrE5DJHZAwUjw10U"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":600,"endMinute":659,"createDate":"2015-08-02 21:09:48","_id":"FNbJT5koEOYrz8q3"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":660,"endMinute":719,"createDate":"2015-08-02 21:09:48","_id":"NLXyRgqH83ksobip"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":720,"endMinute":779,"createDate":"2015-08-02 21:09:49","_id":"7h7gdxzsZP6P3xMa"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":780,"endMinute":839,"createDate":"2015-08-02 21:09:49","_id":"1ltwwbxNAGKfjYa7"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":840,"endMinute":899,"createDate":"2015-08-02 21:09:50","_id":"Go4Xi9c8XW5QdMXb"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":900,"endMinute":959,"createDate":"2015-08-02 21:09:51","_id":"XdvUrnusNWQpwsDf"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":960,"endMinute":1019,"createDate":"2015-08-02 21:09:51","_id":"lIQ7gbzoEgg7V0As"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":1020,"endMinute":1079,"createDate":"2015-08-02 21:09:52","_id":"MTO6m9j03ycwrT1v"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":1080,"endMinute":1139,"createDate":"2015-08-02 21:09:52","_id":"vmIqj7tO1HGS9TOM"}
+{"$$deleted":true,"_id":"VrE5DJHZAwUjw10U"}
+{"$$deleted":true,"_id":"FNbJT5koEOYrz8q3"}
+{"$$deleted":true,"_id":"NLXyRgqH83ksobip"}
+{"$$deleted":true,"_id":"7h7gdxzsZP6P3xMa"}
+{"$$deleted":true,"_id":"1ltwwbxNAGKfjYa7"}
+{"$$deleted":true,"_id":"vmIqj7tO1HGS9TOM"}
+{"$$deleted":true,"_id":"MTO6m9j03ycwrT1v"}
+{"$$deleted":true,"_id":"lIQ7gbzoEgg7V0As"}
+{"$$deleted":true,"_id":"XdvUrnusNWQpwsDf"}
+{"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"Mwyx6VyrnTdYfJ2b","roomName":"440","date":"2015-8-3","startMinute":900,"endMinute":959,"createDate":"2015-08-02 21:10:03","_id":"bfTV9chIKm8wPHlC"}

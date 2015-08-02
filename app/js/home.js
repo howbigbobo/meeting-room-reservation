@@ -15,13 +15,21 @@ function getUser() {
     });
 }
 
+function getDateParam() {
+    return {
+        date: '2015-08-03',
+        interval: 60
+    }
+}
+
 function complieReservationTemplate() {
     var html = $('#template-reservation').html();
     return template.compile(html);
 }
 
 function getReservationList() {
-    ajaxGet('/reservation/list', {}, function (response) {
+    var param = getDateParam();
+    ajaxGet('/reservation/list', param, function (response) {
         if (response && response.success && response.reservations) {
             reservationTemplate = reservationTemplate || complieReservationTemplate();
             var html = reservationTemplate(response.reservations);
@@ -62,8 +70,8 @@ function reservationLinkClick() {
         if (!_this.attr('canRevert')) return;
         Reservation.remove(_this.attr('reservationId'));
     } else {
-        var date = '' || (new Date()).toString();
-        Reservation.add(_this.attr('roomId'), date, _this.attr('start'), _this.attr('end'));
+        var param = getDateParam();
+        Reservation.add(_this.attr('roomId'), param.date, _this.attr('start'), _this.attr('end'));
     }
 }
 

@@ -121,13 +121,14 @@ exports.reservationService = function () {
     }
 
     me.listReservation = function (uid, date, interval, rooms, callback) {
+        logger.info('list reservation: uid=', uid, 'date=', date, 'interval=', interval);
         if (!rooms || !rooms.length) {
             callback("no room for reservation.", null);
             return;
         }
         uid = uid || '';
         date = date || new Date();
-        interval = interval || 60;
+        interval = Number(interval) || 60;
 
         var dtime = new dateTime(date, interval);
         var minuteArray = dtime.minutesArray();
