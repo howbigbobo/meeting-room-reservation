@@ -28,6 +28,6 @@ server.get("/room/all", controller.allRoom);
 server.get("/reservation/add", controller.addReservation);
 server.get("/reservation/delete", controller.deleteReservation);
 server.get("/reservation/date", controller.findByDate);
-server.get("/reservation/exist", controller.findByDate);
+server.get("/reservation/list", controller.listReservation);
 
 server.listen(8080);

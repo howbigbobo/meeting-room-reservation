@@ -27,7 +27,7 @@ exports.dateTime = function (date, intervalMinute) {
             range.start = i;
             range.end = i + intervalMinute - 1;
             range.text = toTimeString(range.start, range.end + 1);
-            range.enable = range.start >= nowMinute;
+            range.enable = range.start >= nowMinute - intervalMinute;
             ranges.push(range);
         }
         return ranges;
@@ -38,7 +38,7 @@ exports.dateTime = function (date, intervalMinute) {
     return {
         date: time.toDateString(),
         minutesInDay: time.getMinutesInDay(),
-        minutesArray: buildMinuteRange()
+        minutesArray: buildMinuteRange
     };
 };
 

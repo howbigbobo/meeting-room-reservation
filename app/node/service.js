@@ -104,9 +104,8 @@ exports.reservationService = function () {
                 }
                 var exist = {exist: false, reservation: null};
                 for (var i = 0; i < rows.length; i++) {
-                    console.log(rows[i]);
                     var es = rows[i].startMinute, ee = rows[i].endMinute;
-                    if (!(ee <= startMinute) && !(es >= endMinute)) {
+                    if (isInRange(startMinute, endMinute, es, ee)) {
                         exist.exist = true;
                         exist.reservation = rows[i];
                         break;
@@ -115,6 +114,72 @@ exports.reservationService = function () {
                 callback(null, exist);
             }
         });
+    };
+
+    function isInRange(start, end, start2, end2) {
+        return !(end2 <= start) && !(start2 >= end);
+    }
+
+    me.listReservation = function (uid, date, interval, rooms, callback) {
+        if (!rooms || !rooms.length) {
+            callback("no room for reservation.", null);
+            return;
+        }
+        uid = uid || '';
+        date = date || new Date();
+        interval = interval || 60;
+
+        var dtime = new dateTime(date, interval);
+        var minuteArray = dtime.minutesArray();
+        db.reservations.find({date: dtime.date}, function (err, docs) {
+            if (err) {
+                callback(err, null);
+                return;
+            }
+            docs = docs || [];
+            var roomGroupReservations = groupbyRoomId(docs);
+            var reservations = [];
+            for (var i = 0; i < minuteArray.length; i++) {
+                var minuteRange = minuteArray[i];
+                var roomResArr = [];
+                for (var r = 0; r < rooms.length; r++) {
+                    var reservation = {
+                        isReserved: false, enable: minuteRange.enable, canRevert: false
+                        , text: minuteRange.text, start: minuteRange.start, end: minuteRange.end
+                        , reservation: null
+                    };
+                    var roomReserves = roomGroupReservations[rooms[r]._id];
+                    if (roomReserves && roomReserves.length) {
+                        setReservation(roomReserves, reservation, uid);
+                    }
+                    roomResArr.push(reservation);
+                }
+                reservations.push(roomResArr);
+            }
+
+            callback(null, {rooms: rooms, reservations: reservations});
+        });
+
+        function groupbyRoomId(reservations) {
+            var group = {};
+            for (var i = 0; i < reservations.length; i++) {
+                var roomId = reservations[i].roomId;
+                if (!group[roomId]) group[roomId] = [];
+                group[roomId].push(reservations[i]);
+            }
+            return group;
+        }
+
+        function setReservation(roomReserveList, reservation, uid) {
+            for (var i = 0; i < roomReserveList.length; i++) {
+                if (isInRange(reservation.start, reservation.end, roomReserveList[i].startMinute, roomReserveList[i].endMinute)) {
+                    reservation.reservation = roomReserveList[i];
+                    reservation.isReserved = true;
+                    reservation.canRevert = uid === roomReserveList[i].userId;
+                    break;
+                }
+            }
+        }
     };
 
     return me;

@@ -57,7 +57,7 @@ exports.controller = function () {
                 } else if (!exist) {
                     addUser(user);
                 } else {
-                    responseJson(res, {success: false, message: 'user exist', user: exist});
+                    responseJson(res, {success: true, message: 'user exist', user: exist});
                 }
             });
         } else {
@@ -247,6 +247,28 @@ exports.controller = function () {
                 logger.info('delete reservation error.' + req.query.id, err);
             } else {
                 responseJson(res, {success: count > 0, count: count});
+            }
+        });
+    };
+
+    me.listReservation = function (req, res) {
+        var cookie = clientHelper.cookie(req, res);
+        var uid = cookie[userIdCookieName];
+        var date = req.query.date;
+        var interval = req.query.interval;
+
+        roomService.allRooms(function (err, rows) {
+            if (err || !rows || rows.length == 0) {
+                logger.info("room empty", err);
+                responseJson(res, {success: false, message: "no rooms", reservations: []});
+            } else {
+                reservationService.listReservation(uid, date, interval, rows, function (err, reservations) {
+                    if (err) {
+                        responseJson(res, {success: false, message: err, reservations: []});
+                    } else {
+                        responseJson(res, {success: true, reservations: reservations,});
+                    }
+                });
             }
         });
     };

@@ -1,44 +1,89 @@
 <!doctype html>
-<html lang="en" ng-app="meetingRoom">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>TUV-SUD</title>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/main.css">
-  
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/angular/angular.min.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-  <script src="bower_components/angular-route/angular-route.min.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-  
-  <script src="js/controllers.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/app.js"></script>
+    <meta charset="utf-8">
+    <title>TUV-SUD</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/template/template.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="">会议室预订系统</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">会议室预订系统</a>
         </div>
-        <div class="navbar-collapse collapse" ng-controller="Home">
-          <div class="nav navbar-nav navbar-right" id="welcome">
-            欢迎- <span ng-bind="user.name"></span>
-          </div>
-        </div><!--/.nav-collapse -->
-      </div>
+        <div class="navbar-collapse collapse">
+            <div class="nav navbar-nav navbar-right" id="welcome">
+                欢迎- <span id="userName"></span>
+            </div>
+        </div>
+        <!--/.nav-collapse -->
     </div>
+</div>
 
-	<div id="header">
-		<div class="container">
-			<div class="row" ng-view></div>
-		</div>
-	</div>
+<div id="header">
+    <div class="container">
+        <div class="row" id="main-container"></div>
+    </div>
+</div>
+<script type="text/html" id="template-signup">
+    <div class="col-lg-6 col-lg-offset-3 opacity-80 bg-color-000 padding-30">
+        <h1>欢迎光临</h1>
+
+        <h2 class="subtitle">新客到……，怎么称呼您呢？</h2>
+
+        <form class="form-inline signup" role="form">
+            <div class="form-group">
+                <input type="input" class="form-control" id="binding-name" placeholder="输入你的英文名或中文名"/>
+                <a href="javascript:void(0);" id="btn-sign-up" class="btn btn-theme">Sing up NOW</a>
+            </div>
+            <div></div>
+        </form>
+    </div>
+</script>
+<script type="text/html" id="template-reservation">
+    <div id="room-main" class="col-lg-12 opacity-80 bg-color-000 padding-30">
+        <div class="room-header">
+            date: 2015-07-25
+        </div>
+        <div class="room-contain">
+            <table class="table">
+                <thead>
+                {{each rooms as room}}
+                <th>{{room.name}}</th>
+                {{/each}}
+                </thead>
+                <tbody>
+                {{each reservations as cols}}
+                <tr>
+                    {{each cols as reservation index}}
+                    <td><a href="javascript:void(0);" class="reservation-link" {{if !reservation.enable}}disabled{{/if}}"
+                        roomId="{{rooms[index]._id}}"
+                        start="{{reservation.start}}" end="{{reservation.end}}"
+                        canRevert="{{if reservation.canRevert}}true{{/if}}"
+                        isReserved = "{{if reservation.isReserved}}true{{/if}}"
+                        enable="{{if reservation.enable}}true{{/if}}"
+                        {{if reservation.reservation}}reservationId="{{reservation.reservation._id}}"{{/if}}>
+                        {{reservation.text}}</a>
+                    </td>
+                    {{/each}}
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
 </body>
 </html>

@@ -4,6 +4,7 @@
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:17:50","_id":"55gAa5irxmWmk4hY"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:23:33","_id":"6XEtHgK5IFhmX3dd"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:38:40","_id":"766p8zfzG3y8Mm0F"}
+{"userId":"cUdYuRTxLLeehLkJ","userName":"bowen","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:42:41","_id":"7swAfZtp0hGN5CXX"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:37:14","_id":"B9mRdtKnfIQcLXv5"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:13:08","_id":"BTTPpvguajcRbRwL"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:40:35","_id":"GZ9s8OYGmyIlz5Hv"}
@@ -24,6 +25,3 @@
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:22:38","_id":"uaeTRi0JYv4kZ67H"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:33:57","_id":"xEJiFP3yWmVqDf3F"}
 {"$$indexCreated":{"fieldName":"date","unique":false,"sparse":false}}
-{"userId":"cUdYuRTxLLeehLkJ","userName":"bowen","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:42:41","_id":"7swAfZtp0hGN5CXX"}
-{"userId":"cUdYuRTxLLeehLkJ","userName":"bowen","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-1","startMinute":99,"endMinute":100,"createDate":"2015-08-02 11:42:59","_id":"AZnkUSWcY4FiZKqa"}
-{"$$deleted":true,"_id":"AZnkUSWcY4FiZKqa"}
