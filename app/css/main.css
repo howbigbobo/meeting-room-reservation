@@ -237,6 +237,27 @@ a.reservation-link.disabled {
     background-color: #333;
 }
 
+a.reservation-link.reserved.disabled{
+    color: #bbb;
+    background-color: #245269;
+    font-weight: bold;
+}
+
+.room-header > input, select, button {
+    color: #000;
+    line-height: 1.5em;
+}
+
+#txt-date {
+    cursor: pointer;
+}
+
+#room-reservation-list .tooltip-inner{
+    color: #000;
+    max-width:300px;
+    text-align: left;
+}
+
 /*----------------------------------------------------*/
 
 .opacity-60 {

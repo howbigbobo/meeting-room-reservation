@@ -41,6 +41,7 @@ exports.Reservation = function () {
             date: "",
             startMinute: "",
             endMinute: "",
+            comment:"",
             createDate: ""
         }
     };
