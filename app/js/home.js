@@ -4,8 +4,7 @@ $(function () {
     getUser();
     $('body').on('click', '#btn-sign-up', signup)
         .on('click', '.reservation-link', reservationLinkClick)
-        .on('change', '#slt-interval', getReservationList)
-        .on('blur', '#txt-date', getReservationList);
+        .on('change', '#slt-interval', getReservationList);
 });
 
 function getUser() {
