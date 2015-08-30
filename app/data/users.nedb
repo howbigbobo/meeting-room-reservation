@@ -5,5 +5,4 @@
 {"name":"bowen2","ip":"::1","createDate":"2015-08-02 21:02:36","_id":"j0iIrKyKFrTuckzM"}
 {"name":"bowen","ip":"::1","createDate":"2015-08-02 17:07:18","_id":"kV58hrqZAFyr8gkD"}
 {"name":"bowen","ip":"::1","createDate":"2015-08-02 10:43:00","_id":"riu5b5Xnv8C7k07E"}
-{"$$indexCreated":{"fieldName":"date","unique":false,"sparse":false}}
 {"name":"b","ip":"::1","createDate":"2015-08-10 22:46:11","_id":"ufZv2MQhqHf4Lbqr"}

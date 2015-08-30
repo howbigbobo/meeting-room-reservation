@@ -1,3 +1,5 @@
+//This file only for description the used model.
+
 exports.User = function () {
     return {
         table: "user",

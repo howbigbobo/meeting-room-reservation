@@ -22,7 +22,7 @@ server.get("/user/update", controller.updateUser);
 server.get("/room/add", controller.addRoom);
 server.get("/room/update", controller.updateRoom);
 server.get("/room/delete", controller.deleteRoom);
-server.get("/room/all", controller.allRoom);
+server.get("/room/all", controller.allActiveRooms);
 
 //reservation
 server.get("/reservation/add", controller.addReservation);
