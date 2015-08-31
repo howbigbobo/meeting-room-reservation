@@ -14,20 +14,25 @@ module.exports = function () {
     me.updateRoom = function (id, room, callback) {
         room.updateDate = (new Date()).format();
         logger.info('update room = ', room, ' id=', id);
-        db.rooms.update({_id: id}, {$set: room}, callback);
+        db.rooms.update({ _id: id }, { $set: room }, callback);
+    };
+
+    me.deleteRoom = function (id, callback) {
+        logger.info('delete room = ', room, ' id=', id);
+        db.rooms.remove({_id: id}, callback);
     };
 
     me.getRoomById = function (id, callback) {
         logger.info('find room, id =', id);
-        db.rooms.findOne({_id: id, status: 'A'}, callback);
+        db.rooms.findOne({ _id: id, status: 'A' }, callback);
     };
 
     me.allRooms = function (callback) {
         db.rooms.find({}, callback);
     };
-    
-     me.allActiveRooms = function (callback) {
-        db.rooms.find({status: 'A'}, callback);
+
+    me.allActiveRooms = function (callback) {
+        db.rooms.find({ status: 'A' }, callback);
     };
 
     return me;

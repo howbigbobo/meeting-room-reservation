@@ -1,7 +1,14 @@
 function ajaxGet(url, param, success) {
+    var innerParam = param;
+    if (typeof param === "function" && typeof success !== "function") {
+        innerParam = null;
+        success = param;
+    } else if (typeof param === "function" && typeof success === "function") {
+        innerParam = param();
+    }
     $.ajax({
         url: url,
-        data: param,
+        data: innerParam,
         type: 'get',
         dataType: 'json',
         success: success
@@ -12,13 +19,13 @@ Date.prototype.format = function (format) {
     var date = this;
 
     var map = {
-        "M": date.getMonth() + 1, 
-        "d": date.getDate(), 
-        "h": date.getHours(), 
-        "m": date.getMinutes(), 
-        "s": date.getSeconds(), 
+        "M": date.getMonth() + 1,
+        "d": date.getDate(),
+        "h": date.getHours(),
+        "m": date.getMinutes(),
+        "s": date.getSeconds(),
         "q": Math.floor((date.getMonth() + 3) / 3),
-        "S": date.getMilliseconds() 
+        "S": date.getMilliseconds()
     };
     format = format.replace(/([yMdhmsqS])+/g, function (all, t) {
         var v = map[t];

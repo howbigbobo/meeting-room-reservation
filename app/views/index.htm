@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%include './common/common.head.htm'%>
+        <%include './common/common.css.htm'%>
+</head>
+
+<body>
+    <%include './common/navbar.htm'%>
+
+        <div id="header">
+            <div class="container">
+                <div class="row" id="main-container"></div>
+                <div class="row" id="main-container-reservation" style="display:none;">
+                    <div id="room-main" class="col-lg-12 opacity-80 bg-color-000 padding-30">
+                        <div class="room-header">
+                            Date:
+                            <input type="text" value="" id="txt-date" readonly="readonly" /> Interval:
+                            <select id="slt-interval">
+                                <option value="5">5分钟</option>
+                                <option value="15">15分钟</option>
+                                <option value="30">30分钟</option>
+                                <option value="45">45分钟</option>
+                                <option value="60" selected="selected">1小时</option>
+                                <option value="90">1.5小时</option>
+                                <option value="120">2小时</option>
+                            </select>
+                        </div>
+                        <div class="room-contain" id="room-reservation-list">
+                        </div>
+                    </div>
+                    <div id="room-operation" class="col-lg-8 col-lg-offset-2 text-center navbar-fixed-bottom" style="display:none;">
+
+                        <div></div>
+                        <div>
+                            备注:
+                            <input type="text" placeholder="输入会议主题或说明或..." id="reservation-comment" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%include './user/signup.template.htm'%>
+            <%include './reservation/reservation.template.htm'%>
+                <%include './common/common.js.htm'%>
+                    <script src="/js/home.js"></script>
+</body>
+</html>

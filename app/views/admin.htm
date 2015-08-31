@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%include './common/common.head.htm'%>
+        <%include './common/common.css.htm'%>
+</head>
+
+<body>
+    <%include './common/navbar.htm'%>
+
+        <div id="header">
+            <ul class="nav nav-tabs" id="adminTab">
+                        <li class="active"><a href="#roomManage">会议室管理</a></li>
+                        <li><a href="#userManage">用户管理</a></li>
+                        <li><a href="#reservationManage">预定管理</a></li>
+                        <li><a href="#reservationLog">预定日志</a></li>
+                    </ul>
+
+                    <div class="tab-content" id="adminTabContent">
+                        <div class="tab-pane active" id="roomManage"><%include './admin/room.div.htm'%></div>
+                        <div class="tab-pane" id="userManage">Your Profile tab content here </div>
+                        <div class="tab-pane" id="reservationManage"> Your Messages tab content here </div>
+                        <div class="tab-pane" id="reservationLog">Your Settings tab content here</div>
+                    </div>
+        </div>
+
+        <%include './common/common.js.htm'%>
+            <script src="/js/admin.js"></script>
+</body>
+
+</html>

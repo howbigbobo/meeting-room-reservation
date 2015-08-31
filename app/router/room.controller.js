@@ -10,7 +10,7 @@ module.exports = function () {
     }
 
     //room
-    me.addRoom = function (req, res, match) {
+    me.addRoom = function (req, res) {
         if (!req.query || !req.query.name) {
             responseJson(res, {success: false, message: "name required."});
             return;
@@ -27,7 +27,7 @@ module.exports = function () {
         });
     };
 
-    me.updateRoom = function (req, res, match) {
+    me.updateRoom = function (req, res) {
         if (!req.query || !req.query.id) {
             responseJson(res, {success: false, message: "id required."});
             return;
@@ -49,14 +49,14 @@ module.exports = function () {
         });
     };
 
-    me.deleteRoom = function (req, res, match) {
+    me.deleteRoom = function (req, res) {
         if (!req.query || !req.query.id) {
             responseJson(res, {success: false, message: "id required."});
             return;
         }
-        roomService.updateRoom(req.query.id, {status: 'D'}, function (err, count) {
+        roomService.deleteRoom(req.query.id, function (err, count) {
             if (err) {
-                if (err) logger.info("update room err,", err);
+                if (err) logger.info("delete room err,", err);
                 responseJson(res, {success: false});
             } else {
                 responseJson(res, {success: count > 0, count: count});
@@ -64,8 +64,19 @@ module.exports = function () {
         });
     };
 
-    me.allActiveRooms = function (req, res, match) {
+    me.allActiveRooms = function (req, res) {
         roomService.allActiveRooms(function (err, rows) {
+            if (err || !rows || rows.length == 0) {
+                logger.info("all room empty", err);
+                responseJson(res, {rooms: []});
+            } else {
+                responseJson(res, {rooms: rows});
+            }
+        });
+    };
+    
+    me.allRooms = function (req, res) {
+        roomService.allRooms(function (err, rows) {
             if (err || !rows || rows.length == 0) {
                 logger.info("all room empty", err);
                 responseJson(res, {rooms: []});

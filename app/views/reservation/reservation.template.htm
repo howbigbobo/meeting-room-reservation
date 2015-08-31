@@ -1,0 +1,38 @@
+<script type="text/html" id="template-reservation">
+    <table class="table">
+        <thead>
+        {{each rooms as room}}
+        <th>{{room.name}}</th>
+        {{/each}}
+        </thead>
+        <tbody>
+        {{each reservations as cols}}
+        <tr>
+            {{each cols as reservation index}}
+            <td><a href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom"
+                   class="reservation-link {{if !reservation.enable}}disabled{{/if}}
+                        {{if reservation.isReserved}}reserved{{/if}}
+                        {{if reservation.isReserved&&reservation.canRevert}}canrevert{{/if}}"
+                   roomId="{{rooms[index]._id}}"
+                   start="{{reservation.start}}" end="{{reservation.end}}"
+                   canRevert="{{if reservation.canRevert}}true{{/if}}"
+                   isReserved="{{if reservation.isReserved}}true{{/if}}"
+                   enable="{{if reservation.enable}}true{{/if}}"
+                   {{if reservation.reservation}}reservationId="{{reservation.reservation._id}}" {{/if}}>
+                {{reservation.text}}</a>
+                {{if reservation.reservation}}
+                <div class="tip-reservation" style="display: none;">
+                    <ul class="list-group">
+                        <li class="list-group-item">会议时间：{{reservation.reservation.startMinute |minuteFormat}} - {{reservation.reservation.endMinute |minuteFormat}}</li>
+                        <li class="list-group-item">预订人：{{reservation.reservation.userName}}</li>
+                        <li class="list-group-item">预订时间：{{reservation.reservation.createDate}}</li>
+                    </ul>
+                </div>
+                {{/if}}
+            </td>
+            {{/each}}
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
