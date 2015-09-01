@@ -7,12 +7,12 @@
   "license": "MIT",
   "devDependencies": {
     "nedb": "latest",
-	"express": "latest",
-	"art-template": "latest",
-	"log4js": "latest"
+    "express": "latest",
+    "art-template": "latest",
+    "log4js": "latest"
   },
   "scripts": {
     "prestart": "npm install",
-    "start": "http-server -a 0.0.0.0 -p 9999"
+    "start": "node ./app/app.js 5678"
   }
 }

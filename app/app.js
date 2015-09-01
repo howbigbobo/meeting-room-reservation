@@ -52,6 +52,10 @@ app.get("/admin", function (req, res) {
 	res.render('admin.htm', {});
 });
 
+app.get("/admin/login", function (req, res) {
+	res.render('admin.login.htm', {});
+});
+
 
 var port = 5678;
 if (process.argv.length > 2) port = process.argv[2] || port;
