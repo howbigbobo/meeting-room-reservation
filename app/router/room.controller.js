@@ -15,7 +15,7 @@ module.exports = function () {
             responseJson(res, {success: false, message: "name required."});
             return;
         }
-        var room = {name: req.query.name, address: req.query.addr, description: req.query.description};
+        var room = {name: req.query.name, address: req.query.address, description: req.query.description};
 
         roomService.addRoom(room, function (err, newRoom) {
             if (err || !newRoom) {
@@ -35,7 +35,7 @@ module.exports = function () {
 
         var room = {};
         if (req.query.name) room.name = req.query.name;
-        if (req.query.addr) room.address = req.query.addr;
+        if (req.query.address) room.address = req.query.address;
         if (req.query.description) room.description = req.query.description;
         if (req.query.status) room.status = req.query.status;
 

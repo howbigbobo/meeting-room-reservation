@@ -18,7 +18,7 @@ module.exports = function () {
     };
 
     me.deleteRoom = function (id, callback) {
-        logger.info('delete room = ', room, ' id=', id);
+        logger.info('delete room , id=', id);
         db.rooms.remove({_id: id}, callback);
     };
 
@@ -28,11 +28,11 @@ module.exports = function () {
     };
 
     me.allRooms = function (callback) {
-        db.rooms.find({}, callback);
+        db.rooms.find({}).sort({name:1}).exec(callback);
     };
 
     me.allActiveRooms = function (callback) {
-        db.rooms.find({ status: 'A' }, callback);
+        db.rooms.find({ status: 'A' }).sort({name:1}).exec(callback);
     };
 
     return me;

@@ -2,6 +2,7 @@ var path = require('path');
 var express = require('express');
 var template = require('art-template');
 var app = express();
+var logger = require('./util/logger').getLogger('app.js');
 
 var userController = require('./router/user.controller')();
 var roomController = require('./router/room.controller')();
@@ -16,6 +17,7 @@ app.engine('htm', template.__express);
 app.set('view engine', 'htm');
 
 app.use(express.static('public'));
+app.use(logger.connectLogger());
 
 //router
 
@@ -24,6 +26,8 @@ app.get("/user/get", userController.getUser);
 app.get("/user/login/", userController.login);
 app.get("/user/add", userController.addUser);
 app.get("/user/update", userController.updateUser);
+app.get("/user/list", userController.findUser);
+app.get("/user/delete", userController.deleteUser);
 
 //room
 app.get("/room/add", roomController.addRoom);
@@ -38,16 +42,20 @@ app.get("/reservation/delete", reservationController.deleteReservation);
 app.get("/reservation/date", reservationController.findByDate);
 app.get("/reservation/list", reservationController.listReservation);
 
-//test
+//index
 app.get("/index", function (req, res) {
 	res.render('index.htm', {});
 });
 
-//test
+//admin
 app.get("/admin", function (req, res) {
 	res.render('admin.htm', {});
 });
 
-app.listen(9999, function () {
-	console.log('listening...' + 9999);
+
+var port = 5678;
+if (process.argv.length > 2) port = process.argv[2] || port;
+app.listen(port, function () {
+	logger.info('listening...' + port);
+	console.log('server started, port = ' + port);
 });

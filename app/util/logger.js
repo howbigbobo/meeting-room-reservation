@@ -1,28 +1,38 @@
-var util = require('util');
+var log4js = require('log4js');
+log4js.configure(__dirname + '/../config/log4js.json');
 exports.getLogger = function (name) {
+    function formatLog() {
+        var log = [];
+        for (var i = 0; i < arguments.length; i++) {
+            var obj = arguments[i];
+            if (typeof (obj) === "object") log.push(JSON.stringify(obj));
+            else log.push(obj);
+        }
+        return log.join(' ');
+    }
+    var logger = log4js.getLogger(name);
     var me = {};
-    me.name = name;
     me.debug = function (msg) {
-        var ss = me.name + "[debug]: ";
-        ss += util.format(arguments);
-        util.log(ss);
+        var ss = formatLog(arguments);
+        logger.debug(ss);
     };
     me.info = function () {
-        var ss = me.name + "[info]: ";
-        ss += util.format(arguments);
-        util.log(ss);
+         var ss = formatLog(arguments);
+        logger.info(ss);
     };
-    
+
     me.warn = function () {
-        var ss = me.name + "[warn]: ";
-        ss += util.format(arguments);
-        util.log(ss);
+         var ss = formatLog(arguments);
+        logger.warn(ss);
     };
-    
-    me.warn = function () {
-        var ss = me.name + "[error]: ";
-        ss += util.format(arguments);
-        util.log(ss);
+
+    me.error = function () {
+         var ss = formatLog(arguments);
+        logger.error(ss);
+    };
+
+    me.connectLogger = function () {
+        return log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' });
     };
     return me;
 };

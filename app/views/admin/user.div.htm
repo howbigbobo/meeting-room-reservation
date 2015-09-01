@@ -1,0 +1,27 @@
+<div id="user-manage">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>名称</th>
+				<th>IP</th>
+				<th>创建时间</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="user-table-body">
+		</tbody>
+	</table>
+</div>
+
+<script type="text/html" id="template-user-list">
+	{{each users as user}}
+	<tr>
+		<td>{{user.name}}</td>
+		<td>{{user.ip}}</td>
+		<td>{{user.createDate}}</td>
+		<td>
+			<a class="btn danger" href="javascript:;" onclick="UserManager.delete('{{user._id}}')">删除</a>
+		</td>
+	</tr>
+	{{/each}}
+</script>

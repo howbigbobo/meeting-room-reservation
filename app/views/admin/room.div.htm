@@ -25,26 +25,31 @@
 			{{if room.status==='A'}}
 			<a class="btn warn" href="javascript:;" onclick="RoomManager.disable('{{room._id}}')">停用</a> {{else}}
 			<a class="btn primary" href="javascript:;" onclick="RoomManager.enable('{{room._id}}')">启用</a> {{/if}}
-			<a class="btn danger" href="javascript:;" onclick="RoomManager.edit('{{room._id}}')">修改</a>
+			<a class="btn info" href="javascript:;" onclick="RoomManager.edit('{{room._id}}')">修改</a>
 			<a class="btn danger" href="javascript:;" onclick="RoomManager.delete('{{room._id}}')">删除</a>
 		</td>
 	</tr>
 	{{/each}}
+	<tr>
+		<td colspan="5" class="text-center">
+			<a class="btn success" href="javascript:;" onclick="RoomManager.add()">新增</a>
+		</td>
+	</tr>
 </script>
 <script type="text/html" id="template-room-edit">
-	<form>
-		<input type="hidden" id="txt-room-id" value="{{_id}}" name="id"/>
+	<form id="room-form">
+		<input type="hidden" id="txt-room-id" value="{{_id}}" name="id" />
 		<div class="form-group">
 			<label for="txt-room-name">名称：</label>
 			<input type="text" class="form-control" name="name" id="txt-room-name" placeholder="名称" value="{{name}}">
 		</div>
 		<div class="form-group">
 			<label for="txt-room-address">位置：</label>
-			<input type="text" class="form-control" name="address" id="txt-room-address" placeholder="前台右侧" value="{{address}}">
+			<input type="text" class="form-control" name="address" id="txt-room-address" placeholder="例：前台右侧" value="{{address}}">
 		</div>
 		<div class="form-group">
 			<label for="txt-room-description">描述：</label>
-			<input type="text" class="form-control" name="description" id="txt-room-description" placeholder="有投影仪，适合20-40人会议" value="{{description}}">
+			<input type="text" class="form-control" name="description" id="txt-room-description" placeholder="例：有投影仪，适合20-40人会议" value="{{description}}">
 		</div>
 	</form>
 </script>

@@ -11,21 +11,28 @@
 
         <div id="header">
             <ul class="nav nav-tabs" id="adminTab">
-                        <li class="active"><a href="#roomManage">会议室管理</a></li>
-                        <li><a href="#userManage">用户管理</a></li>
-                        <li><a href="#reservationManage">预定管理</a></li>
-                        <li><a href="#reservationLog">预定日志</a></li>
-                    </ul>
+                <li class="active"><a data-toggle="tab" href="#roomManage">会议室管理</a></li>
+                <li><a data-toggle="tab" href="#userManage">用户管理</a></li>
+                <li><a data-toggle="tab" href="#reservationManage">预定管理</a></li>
+            </ul>
 
-                    <div class="tab-content" id="adminTabContent">
-                        <div class="tab-pane active" id="roomManage"><%include './admin/room.div.htm'%></div>
-                        <div class="tab-pane" id="userManage">Your Profile tab content here </div>
-                        <div class="tab-pane" id="reservationManage"> Your Messages tab content here </div>
-                        <div class="tab-pane" id="reservationLog">Your Settings tab content here</div>
-                    </div>
+            <div class="tab-content" id="adminTabContent">
+                <div class="tab-pane active" id="roomManage">
+                    <%include './admin/room.div.htm'%>
+                </div>
+                <div class="tab-pane" id="userManage">
+                    <%include './admin/user.div.htm'%>
+                </div>
+                <div class="tab-pane" id="reservationManage">
+                    <%include './admin/reservation.div.htm'%>
+                </div>
+            </div>
         </div>
 
         <%include './common/common.js.htm'%>
+            <script src="/js/room.manage.js"></script>
+            <script src="/js/user.manage.js"></script>
+            <script src="/js/reservation.manage.js"></script>
             <script src="/js/admin.js"></script>
 </body>
 

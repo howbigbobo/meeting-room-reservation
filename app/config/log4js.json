@@ -1,0 +1,30 @@
+{
+  "appenders": [
+    {
+      "type": "clustered",
+      "appenders": [
+        {
+          "type": "file",
+          "filename": "logs/access.log",
+          "category": "http",
+          "maxLogSize": 2097152,
+          "numBackups": 20
+        },
+        {
+          "type": "file",
+          "filename": "logs/app.log",
+          "maxLogSize":  2097152,
+          "numBackups": 20
+        },
+        {
+          "type": "logLevelFilter",
+          "level": "ERROR",
+          "appender": {
+            "type": "file",
+            "filename": "logs/errors.log"
+          }
+        }
+      ]
+    }
+  ]
+}

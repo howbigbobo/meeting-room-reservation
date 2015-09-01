@@ -8,7 +8,8 @@
   "devDependencies": {
     "nedb": "latest",
 	"express": "latest",
-	"art-template": "latest"
+	"art-template": "latest",
+	"log4js": "latest"
   },
   "scripts": {
     "prestart": "npm install",

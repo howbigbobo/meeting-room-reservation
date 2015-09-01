@@ -49,7 +49,6 @@ template.helper('dateFormat', function (date, format) {
 });
 
 template.helper("minuteFormat", function (minuteInDay) {
-    console.log(minuteInDay);
     if (!minuteInDay && minuteInDay != 0) return "";
     var hour = parseInt(minuteInDay / 60);
     var minute = parseInt(minuteInDay % 60);

@@ -37,13 +37,13 @@ exports.Reservation = function () {
             id: 0,
             userId: "",
             userName: "",
-            ip:"",
+            ip: "",
             roomId: "",
             roomName: "",
             date: "",
             startMinute: "",
             endMinute: "",
-            comment:"",
+            comment: "",
             createDate: ""
         }
     };

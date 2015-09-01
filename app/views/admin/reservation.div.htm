@@ -1,0 +1,39 @@
+<div id="reservation-manage">
+	<div>
+		Date:
+		<a href="javasdcript:;" onclick="changeDay(-1);">前</a>
+		<input type="text" value="" id="txt-reservation-date" readonly="readonly" />
+		<a href="javasdcript:;" onclick="changeDay(1);">后</a>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>日期</th>
+				<th>会议室</th>
+				<th>会议时间</th>
+				<th>预订人</th>
+				<th>预定时IP</th>
+				<th>预定时间</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody id="reservation-table-body">
+		</tbody>
+	</table>
+</div>
+
+<script type="text/html" id="template-reservation-list">
+	{{each reservations as re}}
+	<tr>
+		<td>{{re.date}}</td>
+		<td>{{re.roomName}}</td>
+		<td>{{re.startMinute |minuteFormat}} - {{re.endMinute |minuteFormat}}</td>
+		<td>{{re.userName}}</td>
+		<td>{{re.ip}}</td>
+		<td>{{re.createDate}}</td>
+		<td>
+			<a class="btn danger" href="javascript:;" onclick="ReservationManager.delete('{{re._id}}')">删除</a>
+		</td>
+	</tr>
+	{{/each}}
+</script>

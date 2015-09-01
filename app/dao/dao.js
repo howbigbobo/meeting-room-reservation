@@ -2,7 +2,7 @@ var path = require('path');
 var logger = require("../util/logger").getLogger("dao");
 var DataStore = require('nedb');
 
-var dbDir = path.normalize(__dirname+'/../data');
+var dbDir = path.normalize(__dirname + '/../data');
 var db = db || {};
 
 exports.db = function () {

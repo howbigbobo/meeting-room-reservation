@@ -74,7 +74,7 @@ module.exports = function () {
         }
     };
 
-    me.updateUser = function (req, res, match) {
+    me.updateUser = function (req, res) {
         logger.info("update user: ", req.query);
         var uid = req.query.id || clientHelper.cookie(req, res)[constants.cookie.userId];
         if (!req.query || !uid) {
@@ -93,6 +93,34 @@ module.exports = function () {
             }
         });
     };
+
+    me.findUser = function (req, res) {
+        logger.info('find user');
+        userService.findUser({}, function (err, rows) {
+            if (err) {
+                logger.error('find user error,', err);
+                responseJson(res, { success: false });
+            } else {
+                responseJson(res, { success: true, users: rows });
+            }
+        });
+    }
+
+    me.deleteUser = function (req, res) {
+        var id = req.query.id;
+        if (!id) {
+            responseJson(res, { success: false, message: 'id required' });
+            return;
+        }
+        userService.deleteUser(id, function (err, count) {
+            if (err) {
+                logger.error('delete user error,', err);
+                responseJson(res, { success: false });
+            } else {
+                responseJson(res, { success: true, count: count });
+            }
+        });
+    }
 
     return me;
 };
