@@ -32,7 +32,26 @@ module.exports = function () {
     };
 
     me.login = function (req, res, match) {
+        var name = req.query.name;
+        var password = req.query.password;
+        if (!name || !password) {
+            responseJson(res, { success: false, message: "name and password are required." });
+            return;
+        }
 
+        userService.getUserByPwd(name, password, function (err, user) {
+            if (err) {
+                logger.error('login error: ', err);
+                responseJson(res, { success: false, message: "error." });
+                return;
+            }
+            if (user && user.name && user.password) {
+                responseJson(res, { success: true, message: "login success" });
+            } else {
+                logger.info('login failed. name=', name, 'pwd=', password);
+                responseJson(res, { success: false, message: "name or password is not correct." });
+            }
+        });
     };
 
     me.addUser = function (req, res, match) {

@@ -23,7 +23,7 @@ app.use(logger.connectLogger());
 
 //user
 app.get("/user/get", userController.getUser);
-app.get("/user/login/", userController.login);
+app.get("/user/login", userController.login);
 app.get("/user/add", userController.addUser);
 app.get("/user/update", userController.updateUser);
 app.get("/user/list", userController.findUser);
@@ -60,6 +60,6 @@ app.get("/admin/login", function (req, res) {
 var port = 5678;
 if (process.argv.length > 2) port = process.argv[2] || port;
 app.listen(port, function () {
-	logger.info('listening...' + port);
+	logger.info('server started, port = ' + port);
 	console.log('server started, port = ' + port);
 });

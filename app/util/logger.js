@@ -17,17 +17,17 @@ exports.getLogger = function (name) {
         logger.debug(ss);
     };
     me.info = function () {
-         var ss = formatLog(arguments);
+        var ss = formatLog(arguments);
         logger.info(ss);
     };
 
     me.warn = function () {
-         var ss = formatLog(arguments);
+        var ss = formatLog(arguments);
         logger.warn(ss);
     };
 
     me.error = function () {
-         var ss = formatLog(arguments);
+        var ss = formatLog(arguments);
         logger.error(ss);
     };
 

@@ -6,6 +6,8 @@ function ajaxGet(url, param, success) {
     } else if (typeof param === "function" && typeof success === "function") {
         innerParam = param();
     }
+    innerParam = innerParam || {};
+    innerParam.r = Math.random();
     $.ajax({
         url: url,
         data: innerParam,

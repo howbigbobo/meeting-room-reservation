@@ -9,7 +9,8 @@
     "nedb": "latest",
     "express": "latest",
     "art-template": "latest",
-    "log4js": "latest"
+    "log4js": "latest",
+	"express-session": "latest"
   },
   "scripts": {
     "prestart": "npm install",
