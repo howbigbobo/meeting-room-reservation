@@ -4,14 +4,14 @@ var session = require('express-session')
 var template = require('art-template');
 var app = express();
 var logger = require('./util/logger').getLogger('app.js');
-
+var clientHelper = require('./util/client-helper');
 var userController = require('./router/user.controller')();
 var roomController = require('./router/room.controller')();
 var reservationController = require('./router/reservation.controller')();
 var constants = require('./constants');
 var FilterRegister = require('./router/FilterRegister');
 var adminLoginRequire = FilterRegister.get(constants.filter.adminLoginFilter);
-adminLoginRequire.registe('/admin');
+adminLoginRequire.registe('/admin', '/user/delete', '/room/delete');
 
 //template
 template.config('extname', '');
@@ -67,10 +67,20 @@ app.get("/reservation/delete", reservationController.deleteReservation);
 app.get("/reservation/date", reservationController.findByDate);
 app.get("/reservation/list", reservationController.listReservation);
 
+//ip
+app.get("/ip", function (req, res) {
+  var ip = clientHelper.getIp(req).ip;
+  res.json({ ip: ip });
+});
+
 //index
+app.get("/", function (req, res) {
+  res.redirect('/index');
+});
 app.get("/index", function (req, res) {
   res.render('index.htm', {});
 });
+
 
 //admin
 app.get("/admin", function (req, res) {

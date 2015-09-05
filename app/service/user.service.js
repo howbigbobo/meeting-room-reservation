@@ -31,6 +31,15 @@ module.exports = function () {
             if (callback) callback(err, doc);
         });
     };
+    
+    me.getUserByName = function (name, callback) {
+        if (!name) return callback(null, null);
+        logger.info('get user name=', name);
+        db.users.findOne({ name: name }, function (err, doc) {
+            vaguePwd(doc);
+            if (callback) callback(err, doc);
+        });
+    };
 
     me.getUserByPwd = function (name, pwd, callback) {
         if (!name || !pwd) return callback(null, null);

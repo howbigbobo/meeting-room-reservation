@@ -1,4 +1,5 @@
 logs/*
+appp/logs/*
 !.gitkeep
 tmp
 .idea

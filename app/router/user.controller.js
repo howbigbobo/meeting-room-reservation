@@ -85,13 +85,22 @@ module.exports = function () {
         }
 
         function addUser(user) {
-            userService.addUser(user, function (err, newUser) {
-                if (err || !newUser) {
-                    responseJson(res, { success: false, message: "error." + err });
+            userService.getUserByName(user.name, function (err, exist) {
+                if (err) {
+                    logger.error('get user name error.' + user.name, err);
+                    responseJson(res, { success: false, message: 'error.' + err })
+                } else if (exist) {
+                    responseJson(res, { success: false, message: 'user name ' + user.name + ' is exists.' })
                 } else {
-                    var cookie = clientHelper.cookie(req, res);
-                    if (!req.query.notcookie) cookie.setCookie(constants.cookie.userId, newUser._id, 2 * 365 * 24 * 60 * 60, "/");
-                    responseJson(res, { success: true, user: newUser });
+                    userService.addUser(user, function (err, newUser) {
+                        if (err || !newUser) {
+                            responseJson(res, { success: false, message: "error." + err });
+                        } else {
+                            var cookie = clientHelper.cookie(req, res);
+                            if (!req.query.notcookie) cookie.setCookie(constants.cookie.userId, newUser._id, 2 * 365 * 24 * 60 * 60, "/");
+                            responseJson(res, { success: true, user: newUser });
+                        }
+                    });
                 }
             });
         }

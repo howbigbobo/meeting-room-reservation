@@ -59,11 +59,19 @@ function userCallback(user) {
         $('#main-container').show();
         var html = template('template-signup', {});
         $('#main-container').html(html);
+        getIp();
     }
 }
 
+function getIp() {
+    ajaxGet('/ip', function (response) {
+        $('#ip-text').text(response.ip);
+    });
+
+}
+
 function initDateTimePicker() {
-    dateParam({date: (new Date()).format('yyyy-MM-dd'), interval: 60});
+    dateParam({ date: (new Date()).format('yyyy-MM-dd'), interval: 60 });
     $('#txt-date').datetimepicker({
         timepicker: false,
         format: 'Y-m-d',
@@ -90,6 +98,8 @@ function signup() {
         ajaxGet('/user/add?name=' + name, {}, function (res) {
             if (res && res.success) {
                 userCallback(res.user);
+            } else if (res.message) {
+                alert(res.message);
             }
         });
     }
@@ -112,7 +122,7 @@ function reservationLinkClick() {
 var Reservation = (function reservation() {
     return {
         add: function (roomId, date, start, end) {
-            ajaxGet('/reservation/add', {roomId: roomId, date: date, start: start, end: end}, function (res) {
+            ajaxGet('/reservation/add', { roomId: roomId, date: date, start: start, end: end }, function (res) {
                 if (res && res.success) {
                     getReservationList();
                 } else if (res && res.message) {
@@ -121,7 +131,7 @@ var Reservation = (function reservation() {
             });
         },
         remove: function (reservationId) {
-            ajaxGet('/reservation/delete', {id: reservationId}, function (res) {
+            ajaxGet('/reservation/delete', { id: reservationId }, function (res) {
                 if (res && res.success) {
                     getReservationList();
                 } else if (res && res.message) {
