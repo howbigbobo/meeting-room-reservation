@@ -1,7 +1,10 @@
+var session = require('express-session');
+
 var userService = require("../service/user.service")();
 var clientHelper = require('../util/client-helper');
 var logger = require("../util/logger").getLogger("userController");
 var constants = require('../constants');
+
 
 module.exports = function () {
     var me = {};
@@ -46,6 +49,7 @@ module.exports = function () {
                 return;
             }
             if (user && user.name && user.password) {
+                req.session[constants.session.isLogin] = true;
                 responseJson(res, { success: true, message: "login success" });
             } else {
                 logger.info('login failed. name=', name, 'pwd=', password);
