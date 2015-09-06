@@ -3,7 +3,7 @@ body {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     font-size: 16px;
-    color: #555;
+    color: #565656;
     line-height: 1.6em;
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
@@ -188,6 +188,11 @@ p.copyright {
     text-align: center;
 }
 
+/****************************/
+.navbar-inverse{
+    background-color: #3162AD
+}
+
 /*=========================================================*/
 #binding-name {
     width: 300px;
@@ -265,6 +270,12 @@ a.reservation-link.reserved.disabled{
     filter: alpha(Opacity=80);
     -moz-opacity: 0.8;
     opacity: 0.8;
+}
+
+.opacity-90 {
+    filter: alpha(Opacity=90);
+    -moz-opacity: 0.9;
+    opacity: 0.9;
 }
 
 .bg-color-000 {

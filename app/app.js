@@ -13,6 +13,8 @@ var FilterRegister = require('./router/FilterRegister');
 var adminLoginRequire = FilterRegister.get(constants.filter.adminLoginFilter);
 adminLoginRequire.registe('/admin', '/user/delete', '/room/delete');
 
+var version = (new Date()).getTime();
+
 //template
 template.config('extname', '');
 template.config('openTag', '<%');
@@ -78,17 +80,17 @@ app.get("/", function (req, res) {
   res.redirect('/index');
 });
 app.get("/index", function (req, res) {
-  res.render('index.htm', {});
+  res.render('index.htm', { version: version });
 });
 
 
 //admin
 app.get("/admin", function (req, res) {
-  res.render('admin.htm', {});
+  res.render('admin.htm', { version: version });
 });
 
 app.get("/admin/login", function (req, res) {
-  res.render('admin.login.htm', {});
+  res.render('admin.login.htm', { version: version });
 });
 
 
