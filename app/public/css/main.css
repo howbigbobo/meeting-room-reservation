@@ -34,7 +34,7 @@ p {
 }
 
 a {
-    color: #d6ee18;
+    /*color: #d6ee18;*/
     word-wrap: break-word;
     -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
     -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -45,7 +45,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #b7cb1b;
+    /*color: #b7cb1b;*/
     text-decoration: none;
     outline: 0;
 }
@@ -57,30 +57,6 @@ a:after {
     -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
     -o-transition: color 0.1s ease-in, background 0.1s ease-in;
     transition: color 0.1s ease-in, background 0.1s ease-in;
-}
-
-.alignleft {
-    text-align: left;
-}
-
-.alignright {
-    text-align: right;
-}
-
-.aligncenter {
-    text-align: center;
-}
-
-.btn-theme {
-    color: #fff;
-    background-color: #fd680e;
-    border-color: #fd680e;
-}
-
-.btn-theme:hover {
-    color: #fff;
-    background-color: #444;
-    border-color: #444;
 }
 
 form.signup {
@@ -111,8 +87,8 @@ a.navbar-brand:hover {
 /* Header */
 
 #header {
-    background-color: #444;
-    background: url(../img/main-bg.jpg) no-repeat center top;
+    /*background-color: #444;
+    background: url(../img/main-bg.jpg) no-repeat center top;*/
     margin-top: -20px;
     padding-top: 150px;
     background-attachment: relative;
@@ -133,49 +109,17 @@ a.navbar-brand:hover {
 
 #header h1 {
     margin-bottom: 15px;
-    color: #fff;
+    /*color: #fff;*/
     font-size: 45px;
     font-weight: 900;
     letter-spacing: -1px;
 }
 
 h2.subtitle {
-    color: #fff;
+    /*color: #fff;*/
     font-size: 20px;
 }
 
-/* slide */
-.carousel-indicators {
-    position: absolute;
-    bottom: -40px;
-    left: 50%;
-    z-index: 15;
-    width: 60%;
-    padding-left: 0;
-    margin-left: -50%;
-    text-align: center;
-    list-style: none;
-}
-
-.carousel-indicators li {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 1px;
-    text-indent: -999px;
-    cursor: pointer;
-    background-color: #000 \9;
-    background-color: #fff;
-    border: 1px solid #fff;
-    border-radius: 10px;
-}
-
-.carousel-indicators .active {
-    width: 12px;
-    height: 12px;
-    margin: 0;
-    background-color: #b7cb1b;
-}
 
 /* footer */
 #footer {
@@ -200,7 +144,7 @@ p.copyright {
 }
 
 #welcome {
-    color: #c6d550;
+    /*color: #c6d550;*/
     margin-top: 10px;
     font-weight: bold;
     font-style: italic;
@@ -208,7 +152,7 @@ p.copyright {
 
 #room-main {
     margin-top: -80px;
-    color: #eee;
+    /*color: #eee;*/
 }
 
 a.reservation-link {
@@ -221,26 +165,28 @@ a.reservation-link:hover {
 }
 
 a.reservation-link.reserved {
-    background-color: #fd680e;
-    color: #080808;
+    /*background-color: #fd680e;
+    color: #080808;*/
     font-weight: bold;
 }
 
 a.reservation-link.canrevert {
-    background-color: #00d6b2;
-    color: #080808;
+    /*background-color: #00d6b2;
+    color: #080808;*/
     font-weight: bold;
 }
 
 a.reservation-link.disabled {
     color: #ccc;
     background-color: #333;
+    cursor: pointer;
 }
 
 a.reservation-link.reserved.disabled{
     color: #bbb;
     background-color: #245269;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .room-header > input, select, button {
