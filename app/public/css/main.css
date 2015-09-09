@@ -87,19 +87,20 @@ a.navbar-brand:hover {
 /* Header */
 
 #header {
-    /*background-color: #444;
-    background: url(../img/main-bg.jpg) no-repeat center top;*/
-    margin-top: -20px;
+    background-color: #444;
+    background: url(../img/main-bg2.jpg) no-repeat center top;
     padding-top: 150px;
     background-attachment: relative;
     background-position: center center;
-    min-height: 650px;
+    min-height: 750px;
     width: 100%;
 
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    
+    filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -153,15 +154,17 @@ p.copyright {
 #room-main {
     margin-top: -80px;
     /*color: #eee;*/
+    border-radius: 12px;
 }
 
 a.reservation-link {
-    border: #bbbbbb solid 1px;
+    border: #0B8DAF solid 1px;
     padding: 6px 20px;
 }
 
 a.reservation-link:hover {
-    background-color: #333;
+    background-color: #50A4C6;
+    color: #fefefe;
 }
 
 a.reservation-link.reserved {
@@ -177,16 +180,16 @@ a.reservation-link.canrevert {
 }
 
 a.reservation-link.disabled {
-    color: #ccc;
-    background-color: #333;
-    cursor: pointer;
+    color: #333;
+    background-color: #aaa;
+    cursor: default;
 }
 
 a.reservation-link.reserved.disabled{
     color: #bbb;
     background-color: #245269;
     font-weight: bold;
-    cursor: pointer;
+    cursor: default;
 }
 
 .room-header > input, select, button {
@@ -195,13 +198,23 @@ a.reservation-link.reserved.disabled{
 }
 
 #txt-date {
-    cursor: pointer;
+    cursor: default;
 }
 
 #room-reservation-list .tooltip-inner{
     color: #000;
     max-width:300px;
     text-align: left;
+}
+
+.th-header {
+    font-size: 20px;
+    color:#333;
+}
+
+.btn-login {
+    font-weight: bold;
+    padding: 6px 25px;
 }
 
 /*----------------------------------------------------*/
@@ -224,8 +237,12 @@ a.reservation-link.reserved.disabled{
     opacity: 0.9;
 }
 
-.bg-color-000 {
-    background-color: #000;
+.bg-color {
+    background-color:#eee;
+}
+
+.bg-color-blue {
+    background-color: rgba(117, 115, 113, 0.1);
 }
 
 .bg-color-eee {
