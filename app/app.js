@@ -1,6 +1,6 @@
 var path = require('path');
 var express = require('express');
-var session = require('express-session')
+var session = require('express-session');
 var template = require('art-template');
 var app = express();
 var logger = require('./util/logger').getLogger('app.js');
@@ -92,6 +92,7 @@ app.get("/admin", function (req, res) {
 app.get("/admin/login", function (req, res) {
   res.render('admin.login.htm', { version: version });
 });
+app.get("/admin/pwd",userController.changePassword);
 
 
 var port = 5678;

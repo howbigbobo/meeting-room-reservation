@@ -1,0 +1,145 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>TUV-SUD</title>
+	<style type="text/css">
+	    /*============Start Progress Bar============*/
+     .c-split-bar {
+       background-color: #fafafa;
+       height: 25px;
+       padding: 0;
+       margin: 50px 0 0px 0;
+       -moz-border-radius: 5px;
+       -webkit-border-radius: 5px;
+       border-radius: 5px;
+       -moz-box-shadow: 0 1px 2px #000 inset,0 1px 0 #444;
+       -webkit-box-shadow: 0 1px 2px #000 inset,0 1px 0 #444;
+       box-shadow: 0 1px 2px #000 inset,0 1px 0 #444;
+     }
+
+     .c-split-bar span {
+       display: inline-block;
+       height: 100%;
+       background-color: #fafafa;
+       -moz-box-shadow: 0 1px 0 rgba(255,255,255,.5) inset;
+       -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.5) inset;
+       box-shadow: 0 1px 0 rgba(255,255,255,.5) inset;
+       -moz-transition: width 0.4s ease-in-out;
+       -webkit-transition: width 0.4s ease-in-out;
+       -ms-transition: width 0.4s ease-in-out;
+       -o-transition: width 0.4s ease-in-out;
+       transition: width 0.4s ease-in-out;
+	   margin-left:-8px;
+     }
+	 .c-split-bar span.first {
+		margin-left:0;
+	 }
+	 
+	 .c-split-bar span.opacity {
+		 filter: alpha(Opacity=0);
+		-moz-opacity: 0;
+		opacity: 0;
+	 }
+
+     /*=======blue bar=======*/
+     .c-split-bar span.blue {
+       background-color: #34c2e3;
+     }
+
+     /*==========orange bar============*/
+     .c-split-bar span.orange  {
+       background-color: #fecf23;
+       background-image: -webkit-gradient(linear, left top, left bottom, from(#fecf23), to(#fd9215));
+       background-image: -webkit-linear-gradient(top, #fecf23, #fd9215);
+       background-image: -moz-linear-gradient(top, #fecf23, #fd9215);
+       background-image: -o-linear-gradient(top, #fecf23, #fd9215);
+       background-image: linear-gradient(top, #fecf23, #fd9215);
+     }
+
+     /*================green bar==============*/
+     .c-split-bar span.green  {
+       background-color: #a5df41;
+       background-image: -webkit-gradient(linear, left top, left bottom, from(#a5df41), to(#4ca916));
+       background-image: -webkit-linear-gradient(top, #a5df41, #4ca916);
+       background-image: -moz-linear-gradient(top, #a5df41, #4ca916);
+       background-image: -o-linear-gradient(top, #a5df41, #4ca916);
+       background-image: linear-gradient(top, #a5df41, #4ca916);
+     }
+	 
+	 /*=================== c-split-graduation =====================*/
+	 .c-split-graduation {
+       background-color: #fafafa;
+       height: 10px;
+       padding: 0;
+       margin: 1px 0 0 0;
+     }
+
+     .c-split-graduation div {
+       display: inline-block;
+       height: 100%;
+       background-color: #fff;
+       -moz-box-shadow: 0 1px 0 rgba(255,255,255,.5) inset;
+       -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.5) inset;
+       box-shadow: 0 1px 0 rgba(255,255,255,.5) inset;
+       -moz-transition: width 0.4s ease-in-out;
+       -webkit-transition: width 0.4s ease-in-out;
+       -ms-transition: width 0.4s ease-in-out;
+       -o-transition: width 0.4s ease-in-out;
+       transition: width 0.4s ease-in-out;
+	   border-left: solid black 1px;
+	   margin-left:-9px;
+	   position: relative;
+     }
+	 .c-split-graduation div.first {
+		margin-left:-1px;
+	 }
+	 .c-split-graduation div.last {
+		  border-right: solid black 1px;
+		  margin-left:-10px;
+	 }
+	 
+	 .c-split-graduation div span{
+	    position:absolute;
+		top: 12px;
+		left: -17px;
+	 }
+	 
+	 .c-split-graduation div label.last{
+	    position: absolute;
+		top:12px;
+		right: -17px;
+	 }
+	</style>
+</head>
+
+<body>
+
+	<div style="padding: 0 20px;">
+		  <div class="c-split-bar">
+			   <span style="width:11.11%;" class="blue first"></span>
+				<span style="width:11.11%" class="orange"></span>
+				 <span style="width:11.11%;" class="green"></span>
+				  <span style="width:11.11%;" class="blue"></span>
+				  <span style="width:11.11%" class="opacity"></span>
+				 <span style="width:11.11%;" class="opacity"></span>
+				  <span style="width:11.11%;" class="blue"></span>
+				  <span style="width:11.11%" class="orange"></span>
+				   <span style="width:11.11%" class="blue"></span>
+		   </div>
+		    <div class="c-split-graduation">
+			    <div style="width:11.11%;" class=" first"><span>9:00</span></div>
+				  <div style="width:11.11%" class=""><span>10:00</span></div>
+				  <div style="width:11.11%;" class=""><span>11:00</span></div>
+				  <div style="width:11.11%;" class=""><span>12:00</span></div>
+				  <div style="width:11.11%" class=""><span>13:00</span></div>
+				  <div style="width:11.11%;" class=""><span>14:00</span></div>
+				  <div style="width:11.11%;" class=""><span>15:00</span></div>
+				  <div style="width:11.11%" class=""><span>16:00</span></div>
+				  <div style="width:11.11%" class="last"><span>17:00</span><label class="last">18:00</label></div>
+		   </div>
+	   <div>
+</body>
+
+</html>

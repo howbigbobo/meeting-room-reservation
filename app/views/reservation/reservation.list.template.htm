@@ -1,0 +1,79 @@
+<script type="text/html" id="template-reservation-bar">
+    {{each reservations as roomRes}}
+    <div class="col-lg-12 room-reserv bg-color padding-30">
+        <div class="row">
+            <div class="col-md-1 text-center">
+                <div class="room-name">
+                    {{roomRes.room.name}}
+                </div>
+                {{if showReserveButton}}
+                <div>
+                    <a href="javascript:void(0);" class="btn btn-primary" onclick="openReserve('{{roomRes.room._id}}');return false;">预订</a>
+                </div>
+                {{/if}}
+            </div>
+            <div class="col-md-11">
+                <div class="room-reserve-bar" roomId="{{roomRes.room._id}}">
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+<script type="text/html" id="template-reservation-tooltip">
+    <ul class="list-group">
+        <li class="list-group-item">会议时间：{{startMinute |minuteFormat}} - {{endMinute |minuteFormat}}</li>
+        <li class="list-group-item">预订人：{{userName}}</li>
+        <li class="list-group-item">备注：{{comment}}</li>
+        <li class="list-group-item">预订时间：{{createDate}}</li>
+        {{if canRevert}}
+        <li class="list-group-item text-warning">(点击可取消预订)</li>
+        {{/if}}
+    </ul>
+</script>
+
+<script type="text/html" id="template-reservation-add">
+    <form id="reservation-add-form">
+        <div class="form-group">
+            <input type="hidden" value="{{room._id}}" name="roomId" id="txt-reserve-roomId" />
+            <label>会议室：{{room.name}}</label>
+        </div>
+        <div class="form-group">
+            <input type="hidden" value="{{date}}" name="date" id="txt-reserve-date" />
+            <label>日期：{{date}}</label>
+        </div>
+        <div class="form-group">
+            <label for="txt-reserve-start">开始时间：</label>
+            <input type="text" class="form-control" name="start" placeholder="点击选择时间或手动输入时间，格式09:00" value="" id="txt-reserve-start">
+        </div>
+        <div class="form-group">
+            <label for="txt-reserve-end">结束时间：</label>
+            <input type="text" class="form-control" name="end" placeholder="点击选择时间或手动输入时间，格式09:00" value="" id="txt-reserve-end">
+        </div>
+        <div class="form-group">
+            <label for="txt-reserve-comment">备注</label>
+            <input type="text" class="form-control" name="comment" placeholder="备注" value="" id="txt-reserve-comment">
+        </div>
+    </form>
+    <div id="reserve-add-errorMessage" class="text-danger">
+    </div>
+</script>
+
+<div class="modal fade" id="reservation-add-modal" tabindex="-1" role="dialog" aria-labelledby="reservation-add-modal-title">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="reservation-add-modal-title">会议室预订</h4>
+            </div>
+            <div class="modal-body" id="reservation-add-modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="addReserve();">预订</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

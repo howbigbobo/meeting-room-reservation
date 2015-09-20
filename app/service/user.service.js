@@ -12,6 +12,10 @@ module.exports = function () {
         return shasum.digest('hex');
     }
 
+    function isEncrypted(content) {
+        return content && content.length == 40 && !(/[^a-fA-F0-9]/g).test(content);
+    }
+
     var me = {};
     me.addUser = function (user, callback) {
         user.createDate = (new Date()).format();
@@ -31,7 +35,28 @@ module.exports = function () {
             if (callback) callback(err, doc);
         });
     };
-    
+
+    me.getUserByIp = function (ip, callback) {
+        if (!ip) return callback(null, null);
+        logger.info('get user ip=', ip);
+        db.users.find({ ip: ip }, function (err, docs) {
+            var hasCb = false;
+            if (docs && docs.length > 0) {
+                for (var i = 0; i < docs.length; i++) {
+                    if (docs[i].name == "admin") {
+                        continue;
+                    }
+                    vaguePwd(docs[i]);
+                    if (callback) callback(err, docs[i]);
+                    hasCb = true;
+                    break;
+                }
+            }
+
+            if (!hasCb && callback) callback(err, null);
+        });
+    };
+
     me.getUserByName = function (name, callback) {
         if (!name) return callback(null, null);
         logger.info('get user name=', name);
@@ -52,8 +77,17 @@ module.exports = function () {
     };
 
     me.updateUser = function (id, user, callback) {
+        if (user && user.password && !isEncrypted(user.password)) {
+            user.password = encrypt(user.password);
+        }
         logger.info('update user,id=' + id, user);
         db.users.update({ _id: id }, { $set: user }, callback);
+    };
+
+    me.changePassword = function (id, pwd, callback) {
+        pwd = encrypt(pwd);
+        logger.info('changePassword,id=' + id, pwd);
+        db.users.update({ _id: id }, { $set: { password: pwd }}, callback);
     };
 
     me.findUser = function (user, callback) {

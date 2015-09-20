@@ -29,6 +29,8 @@ var RoomManager = (function ($) {
 	}
 
 	function disable(id) {
+		var cnf = confirm('确定要停用这个会议室吗？');
+		if(!cnf) return;
 		update({ id: id, status: 'D' });
 	}
 

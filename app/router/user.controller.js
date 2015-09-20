@@ -14,27 +14,38 @@ module.exports = function () {
         res.json(obj);
     }
 
+    function setUIdcookie(req, res, uid) {
+        var cookie = clientHelper.cookie(req, res);
+        if (!req.query.notcookie) cookie.setCookie(constants.cookie.userId, uid, 1 * 365 * 24 * 60 * 60, "/");
+    }
+
     me.getUser = function (req, res, match) {
         var ip = clientHelper.getIp(req).ip;
         var cookie = clientHelper.cookie(req, res);
         var uid = cookie[constants.cookie.userId];
         if (!uid) {
-            responseJson(res, {});
+            userService.getUserByIp(ip, function (err, user) {
+                if (user) user.getByIp = true;
+                callback(err, user);
+            });
             return;
         }
         logger.info('get user: ip=' + ip, 'uid=' + uid);
-        userService.getUserById(cookie[constants.cookie.userId], function (err, user) {
+        userService.getUserById(cookie[constants.cookie.userId], callback);
+
+        function callback(err, user) {
             if (err || !user) {
                 logger.info('user empty: error=', err);
                 responseJson(res, {});
             } else {
                 logger.info('get user=', user);
+                setUIdcookie(req, res, uid);
                 responseJson(res, user);
             }
-        });
+        }
     };
 
-    me.login = function (req, res, match) {
+    me.login = function (req, res) {
         var name = req.query.name;
         var password = req.query.password;
         if (!name || !password) {
@@ -85,19 +96,21 @@ module.exports = function () {
         }
 
         function addUser(user) {
-            userService.getUserByName(user.name, function (err, exist) {
+            userService.getUserByName(user.name, function (err, existUser) {
                 if (err) {
                     logger.error('get user name error.' + user.name, err);
                     responseJson(res, { success: false, message: 'error.' + err })
-                } else if (exist) {
+                } else if (existUser && existUser.ip != user.ip) {
                     responseJson(res, { success: false, message: 'user name ' + user.name + ' is exists.' })
+                } else if (existUser && existUser.ip == user.ip) {
+                    setUIdcookie(req, res, existUser._id);
+                    responseJson(res, { success: true, user: existUser });
                 } else {
                     userService.addUser(user, function (err, newUser) {
                         if (err || !newUser) {
                             responseJson(res, { success: false, message: "error." + err });
                         } else {
-                            var cookie = clientHelper.cookie(req, res);
-                            if (!req.query.notcookie) cookie.setCookie(constants.cookie.userId, newUser._id, 2 * 365 * 24 * 60 * 60, "/");
+                            setUIdcookie(req, res, newUser._id);
                             responseJson(res, { success: true, user: newUser });
                         }
                     });
@@ -136,7 +149,7 @@ module.exports = function () {
                 responseJson(res, { success: true, users: rows });
             }
         });
-    }
+    };
 
     me.deleteUser = function (req, res) {
         var id = req.query.id;
@@ -152,7 +165,35 @@ module.exports = function () {
                 responseJson(res, { success: true, count: count });
             }
         });
-    }
+    };
+
+    me.changePassword = function (req, res) {
+        if (!req.query.old || !req.query.new) {
+            responseJson(res, { success: false, message: 'parameter required' });
+            return;
+        }
+
+        userService.getUserByPwd('admin', req.query.old, function (err, user) {
+            if (err) {
+                logger.error('login error: ', err);
+                responseJson(res, { success: false, message: "error." });
+                return;
+            }
+            if (user && user.name && user.password) {
+                userService.changePassword(user._id, req.query.new, function (err, user) {
+                    if (err || !user) {
+                        logger.error('login error: ', err);
+                        responseJson(res, { success: false, message: "error." });
+                        return;
+                    }
+                    responseJson(res, { success: true, message: "udate success" });
+                });
+            } else {
+                logger.info('changePassword failed. pwd=', req.query.old);
+                responseJson(res, { success: false, message: "password is wrong." });
+            }
+        });
+    };
 
     return me;
 };

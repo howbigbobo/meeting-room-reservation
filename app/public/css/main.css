@@ -2,7 +2,7 @@ body {
     background-color: #f2f2f2;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
-    font-size: 16px;
+    font-size: 14px;
     color: #565656;
     line-height: 1.6em;
     -webkit-font-smoothing: antialiased;
@@ -89,8 +89,8 @@ a.navbar-brand:hover {
 #header {
     background-color: #444;
     background: url(../img/main-bg2.jpg) no-repeat center top;
-    padding-top: 150px;
-    background-attachment: relative;
+    padding-top: 75px;
+    background-attachment: fixed;
     background-position: center center;
     min-height: 750px;
     width: 100%;
@@ -152,69 +152,70 @@ p.copyright {
 }
 
 #room-main {
-    margin-top: -80px;
-    /*color: #eee;*/
-    border-radius: 12px;
+    margin-top: -15px;
 }
 
-a.reservation-link {
-    border: #0B8DAF solid 1px;
-    padding: 6px 20px;
+.room-reserv {
+     border-radius: 12px;
+     margin-top: 20px;
 }
 
-a.reservation-link:hover {
-    background-color: #50A4C6;
-    color: #fefefe;
-}
-
-a.reservation-link.reserved {
-    /*background-color: #fd680e;
-    color: #080808;*/
-    font-weight: bold;
-}
-
-a.reservation-link.canrevert {
-    /*background-color: #00d6b2;
-    color: #080808;*/
-    font-weight: bold;
-}
-
-a.reservation-link.disabled {
-    color: #333;
-    background-color: #aaa;
-    cursor: default;
-}
-
-a.reservation-link.reserved.disabled{
-    color: #bbb;
-    background-color: #245269;
-    font-weight: bold;
-    cursor: default;
+.radius {
+     border-radius: 12px;
 }
 
 .room-header > input, select, button {
     color: #000;
     line-height: 1.5em;
+    font-size: 16px;
 }
 
 #txt-date {
     cursor: default;
+    font-weight: bold;
 }
 
 #room-reservation-list .tooltip-inner{
     color: #000;
     max-width:300px;
     text-align: left;
+    background-color:#8DC0D5;
 }
 
-.th-header {
-    font-size: 20px;
-    color:#333;
+#room-reservation-list .tooltip-arrow{
+    border-top-color:#8DC0D5;
+    border-bottom-color:#8DC0D5;
 }
 
 .btn-login {
     font-weight: bold;
     padding: 6px 25px;
+}
+
+
+.room-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav-welecom {
+    color: #eee;
+}
+
+#adminTab li a{
+    color: #eee;
+    padding-left: 30px;
+    padding-right:30px;
+}
+#adminTab li a{
+   color: #333;
+}
+#adminTab li.active a{
+    color: #333;
+}
+
+.xdsoft_disabled{
+    display: none;
 }
 
 /*----------------------------------------------------*/
@@ -238,7 +239,7 @@ a.reservation-link.reserved.disabled{
 }
 
 .bg-color {
-    background-color:#eee;
+    background-color:#fff;
 }
 
 .bg-color-blue {
@@ -247,6 +248,10 @@ a.reservation-link.reserved.disabled{
 
 .bg-color-eee {
     background-color: #eee;
+}
+
+.padding-10 {
+    padding: 10px 30px;
 }
 
 .padding-30 {

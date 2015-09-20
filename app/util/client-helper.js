@@ -29,7 +29,7 @@ exports.cookie = function (req, res) {
             expireSecond = parseInt(expireSecond);
             var time = (new Date()).getTime() + expireSecond * 1000;
             var newDate = new Date(time);
-            cookieStr += 'expires=' + newDate + ';';
+            cookieStr += 'expires=' + newDate.toUTCString() + ';';
         }
         if (path) {
             cookieStr += 'path=' + path + ';';
