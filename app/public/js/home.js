@@ -183,20 +183,20 @@ var Reservation = (function reservation() {
                 if (res && res.success) {
                     $('#reservation-add-modal').modal('hide');
                     alert('预订成功');
-                    getReservationList();
                 } else if (res && res.message) {
                     alert(res.message);
                 }
+                getReservationList();
             });
         },
         remove: function (reservationId) {
             ajaxGet('/reservation/delete', { id: reservationId }, function (res) {
                 if (res && res.success) {
                     alert('取消预订成功');
-                    getReservationList();
                 } else if (res && res.message) {
                     alert(res.message);
                 }
+                getReservationList();
             });
         }
     }
@@ -209,17 +209,33 @@ function openReserve(roomId) {
             var html = template('template-reservation-add', { room: reservationsCache[i].room, date: dateParam().date });
             $('#reservation-add-modal-body').html(html);
             $('#reservation-add-modal').modal();
-
+            function getTime(time) {
+                var hour = time.getHours();
+                var minute = time.getMinutes() >= 30 ? 30 : 0;
+                return (hour < 10 ? '0' : '') + hour + ":" + (minute < 10 ? '0' : '') + minute;
+            }
             function initTimePicker() {
                 var opt = {
                     datepicker: false,
                     format: 'H:i',
                     step: 30
                 };
-                opt.minTime = isToday(dateParam().date) ? 0 : '9:00';
-                opt.maxTime = "18:30";
-                $('#txt-reserve-start,#txt-reserve-end').datetimepicker(opt);
+                var nowTime = getTime(new Date());
+                opt.minTime = isToday(dateParam().date) ? nowTime : '9:00';
+                opt.maxTime = nowTime > "18:30" ? nowTime : "18:30";
+
+                $('#txt-reserve-end').datetimepicker(opt);
+
+                var optStart = $.extend({}, opt, true);
+                optStart.onChangeDateTime = function (dp, $input) {
+                    var time = getTime(new Date(dp));
+                    opt.minTime = time;
+                    opt.maxTime = time > "18:30" ? time : "18:30";
+                    $('#txt-reserve-end').datetimepicker(opt);
+                };
+                $('#txt-reserve-start').datetimepicker(optStart);
             }
+
             initTimePicker();
             break;
         }
