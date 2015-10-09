@@ -98,14 +98,13 @@ app.get("/admin/pwd", userController.changePassword);
 var os = require('os');
 var ifaces = os.networkInterfaces();
 var currentWlanIp = "";
-if (ifaces["WLAN"]) {
-  ifaces["WLAN"].forEach(function (details) {
-    if (details.family == 'IPv4') {
-      currentWlanIp = details.address;
+for (var dev in ifaces) {
+  ifaces[dev].forEach(function (detail) {
+    if (detail.family == 'IPv4' && !detail.internal) {
+      currentWlanIp = detail.address;
     }
   });
 }
-
 
 var port = 5678;
 if (process.argv.length > 2) port = process.argv[2] || port;
