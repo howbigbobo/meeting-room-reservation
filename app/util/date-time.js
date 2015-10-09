@@ -46,7 +46,7 @@ exports.dateTime = function (date, intervalMinute) {
 
 Date.prototype.toDateString = function () {
     var _date = this;
-    return _date.getFullYear() + '-' + (_date.getMonth() + 1) + '-' + _date.getDate();
+    return _date.getFullYear() + '-' + String(_date.getMonth() + 1).padLeft('0', 2) + '-' + String(_date.getDate()).padLeft('0', 2)
 };
 
 Date.prototype.getMinutesInDay = function () {

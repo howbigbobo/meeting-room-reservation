@@ -1,13 +1,12 @@
 <script type="text/html" id="template-signup">
     <div class="col-lg-6 col-lg-offset-3 opacity-90 bg-color padding-30 radius">
-        <h1>欢迎使用会议室预订系统</h1>
-
+        <h2>欢迎使用会议室预订系统</h2>
         <h4 class="subtitle">您的IP是：<span id="ip-text"></span></h4>
-        <h2 class="subtitle">请输入您的用户名，用户名将与IP绑定！</h2>
+        <h3 class="subtitle">首先，请输入您的称呼，以便让大家知道是您预订了会议室</h3>
 
-        <form class="form-inline signup" role="form">
+        <form class="form-inline signup" role="form" action="#">
             <div class="form-group">
-                <input type="input" class="form-control" id="binding-name" placeholder="请输入您的用户名,例如: amy.lin" />
+                <input type="input" class="form-control" id="binding-name" placeholder="中文名或英文名,例如: 马云、jack.ma" />
                 <a href="javascript:void(0);" id="btn-sign-up" class="btn btn-warning" onclick="signup();">确定</a>
             </div>
             <div></div>

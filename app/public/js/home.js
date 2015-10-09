@@ -133,6 +133,7 @@ function userCallback(user) {
         $('#main-container').hide();
         initDateTimePicker();
         getReservationList();
+        listenEnter(false);
     } else {
         $('#main-container-reservation').hide();
         $('#main-container').show();
@@ -140,14 +141,26 @@ function userCallback(user) {
         $('#main-container').html(html);
         $('#binding-name').val(user && user.name ? user.name : '');
         getIp();
+        listenEnter(true);
     }
+}
+
+function listenEnter(listen) {
+    $(document).off('keydown.confirm');
+    if (!listen) {
+        return;
+    }
+    $(document).on('keydown.confirm', function (e) {
+        if (e && e.keyCode && e.keyCode == 13) {
+            signup();
+        }
+    });
 }
 
 function getIp() {
     ajaxGet('/ip', function (response) {
         $('#ip-text').text(response.ip);
     });
-
 }
 
 function initDateTimePicker() {
@@ -164,6 +177,7 @@ function initDateTimePicker() {
 
 function signup() {
     var name = $.trim($('#binding-name').val());
+    console.log(name);
     if (name) {
         ajaxGet('/user/add?name=' + name, {}, function (res) {
             if (res && res.success) {
@@ -182,7 +196,7 @@ var Reservation = (function reservation() {
             ajaxGet('/reservation/add', { roomId: roomId, date: date, start: start, end: end, comment: comment }, function (res) {
                 if (res && res.success) {
                     $('#reservation-add-modal').modal('hide');
-                    alert('预订成功');
+                    alert('预订成功！ （点击你的预订记录可以取消预订）');
                 } else if (res && res.message) {
                     alert(res.message);
                 }
