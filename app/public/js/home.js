@@ -264,8 +264,9 @@ function addReserve() {
         return;
     }
     function getMinuteInay(time) {
-        var date = new Date('2015-09-01 ' + time);
-        return date.getHours() * 60 + date.getMinutes();
+        var xx = time.split(':');
+        if (xx.length < 2) return 0;
+        return Number(xx[0]) * 60 + Number(xx[1]);
     }
 
     Reservation.add($('#txt-reserve-roomId').val(), $('#txt-reserve-date').val(), getMinuteInay(start), getMinuteInay(end), $('#txt-reserve-comment').val());
