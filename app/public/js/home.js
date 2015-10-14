@@ -87,7 +87,8 @@ function initReserveBar(reservations) {
                     reserved: true,
                     canRevert: re.canRevert,
                     currentUser: re.currentUser,
-                    data: re
+                    data: re,
+                    user: re.userName
                 });
                 lastEnd = re.endMinute;
             }
@@ -198,7 +199,13 @@ var Reservation = (function reservation() {
                     $('#reservation-add-modal').modal('hide');
                     alert('预订成功！ （点击你的预订记录可以取消预订）');
                 } else if (res && res.message) {
-                    alert(res.message);
+                    var msg = res.message;
+                    if (res.message == "reservation exist." && res.reservation) {
+                        msg = textFormat(res.reservation.startMinute) + '-' + textFormat(res.reservation.endMinute);
+                        msg += ",会议室(" + res.reservation.roomName + ")已经被";
+                        msg += res.reservation.userName + "预订";
+                    }
+                    alert(msg);
                 }
                 getReservationList();
             });
@@ -270,4 +277,10 @@ function addReserve() {
     }
 
     Reservation.add($('#txt-reserve-roomId').val(), $('#txt-reserve-date').val(), getMinuteInay(start), getMinuteInay(end), $('#txt-reserve-comment').val());
+}
+
+function textFormat(value) {
+    var hour = parseInt(value / 60);
+    var minute = value % 60
+    return (hour > 9 ? '' + hour : '0' + hour) + ':' + (minute > 9 ? '' + minute : '0' + minute);
 }

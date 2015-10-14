@@ -50,7 +50,7 @@ module.exports = function () {
     };
 
     function isInRange(start, end, start2, end2) {
-        return !(end2 <= start) && !(start2 >= end);
+        return (start < start2 && end > start2) || (start > start2 && end2 > start);
     }
 
     me.listReservation = function (uid, date, interval, rooms, callback) {

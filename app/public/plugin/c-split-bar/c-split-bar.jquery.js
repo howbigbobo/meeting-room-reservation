@@ -26,7 +26,7 @@
 		}
 	})();
 
-	function getBar(index, width, enable, reserved, canRevert, currentUser, first) {
+	function getBar(index, width, enable, reserved, canRevert, currentUser, first, user) {
 		width = width * 100;
 		var cls = '';
 		if (currentUser) {
@@ -40,7 +40,7 @@
 		cls += first ? ' first ' : '';
 		cls += canRevert ? ' canRevert ' : '';
 		var barIndex = (index >= 0 ? '" bar-index="' + index + '"' : '');
-		return '<span style="width:' + width + '%" class="' + cls + '" ' + barIndex + '></span>';
+		return '<span style="width:' + width + '%; overflow:hidden;text-align:center;" class="' + cls + '" ' + barIndex + '>' + user + '</span>';
 	}
 
 	function getGraduation(width, text, first, textLast) {
@@ -67,7 +67,7 @@
 		for (var i = 0; i < opts.bars.length; i++) {
 			var bar = opts.bars[i];
 			var width = (bar.end - bar.start) * 1.0 / total;
-			builder.push(getBar(bar.data ? i : -1, width, bar.enable, bar.reserved, bar.canRevert, bar.currentUser, i == 0));
+			builder.push(getBar(bar.data ? i : -1, width, bar.enable, bar.reserved, bar.canRevert, bar.currentUser, i == 0, bar.user));
 			barData[i] = bar.data;
 		}
 

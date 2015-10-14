@@ -55,7 +55,7 @@ module.exports = function () {
                     responseJson(res, { success: false, message: "not exist room." });
                     return;
                 }
-                reservationService.existReservation(req.query.roomId,  Number(req.query.start), Number(req.query.end), req.query.end
+                reservationService.existReservation(req.query.roomId, req.query.date, Number(req.query.start), Number(req.query.end)
                     , function (err, exist) {
                         if (err) {
                             logger.info('exsit reservation error.', err);
