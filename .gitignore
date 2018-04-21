@@ -1,4 +1,4 @@
-logs/*
+logs
 appp/logs/*
 !.gitkeep
 tmp
