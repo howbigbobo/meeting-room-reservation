@@ -8,6 +8,7 @@
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:23:33","_id":"6XEtHgK5IFhmX3dd"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:38:40","_id":"766p8zfzG3y8Mm0F"}
 {"userId":"cUdYuRTxLLeehLkJ","userName":"bowen","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:42:41","_id":"7swAfZtp0hGN5CXX"}
+{"userId":"cTrlEnn24clshyGS","userName":"bobz","ip":"::ffff:192.168.1.107","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2018-04-22","startMinute":930,"endMinute":960,"comment":"","createDate":"2018-04-21 17:03:33","_id":"B6I2KO0DHOJ15hZz"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:37:14","_id":"B9mRdtKnfIQcLXv5"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:13:08","_id":"BTTPpvguajcRbRwL"}
 {"userId":"j0iIrKyKFrTuckzM","userName":"bowen2","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-3","startMinute":780,"endMinute":839,"createDate":"2015-08-02 21:03:13","_id":"F5VYHrhFLOqqIrlF"}
@@ -18,11 +19,13 @@
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:20:33","_id":"M3FHF4ZwY1WS9lNu"}
 {"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-4","startMinute":720,"endMinute":779,"createDate":"2015-08-03 21:08:33","_id":"MnGvO7VddG5G29yH"}
 {"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-5","startMinute":540,"endMinute":569,"createDate":"2015-08-03 21:57:23","_id":"ORY1b5IoVtzy9dlG"}
+{"userId":"cTrlEnn24clshyGS","userName":"bobz","ip":"::ffff:192.168.1.107","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2018-04-21","startMinute":1020,"endMinute":1080,"comment":"","createDate":"2018-04-21 17:02:53","_id":"P1e68nxsFJjxYFRC"}
 {"userId":"98qEEs6tDrpF9JdD","userName":"amy.lin","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-9-21","startMinute":720,"endMinute":810,"comment":"asdfefa","createDate":"2015-09-20 17:56:18","_id":"Re2OxIv2odNVbjGE"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:24:14","_id":"U57HoMnqW8pumkPf"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:37:00","_id":"VKeeN0ss1hzfSdQj"}
 {"userId":"ufZv2MQhqHf4Lbqr","userName":"b","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-11","startMinute":660,"endMinute":719,"createDate":"2015-08-10 22:47:21","_id":"VyQeF6JBcx1F7f9C"}
 {"userId":"XtQA5ftbNUZPfcED","userName":"amy","ip":"::1","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2015-9-20","startMinute":900,"endMinute":930,"createDate":"2015-09-20 14:06:26","_id":"WSNNwJUFMn94AmAk"}
+{"userId":"NfBCZAeVg1pyvPXw","userName":"ent","ip":"::ffff:192.168.1.107","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2016-03-26","startMinute":840,"endMinute":990,"comment":"VC 水果","createDate":"2016-03-25 21:17:55","_id":"XAEWjUN1DhfKtFVR"}
 {"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2015-9-5","startMinute":900,"endMinute":959,"createDate":"2015-09-05 14:42:51","_id":"XsDcYFlAqhwwAmot"}
 {"userId":"XtQA5ftbNUZPfcED","userName":"amy","ip":"::1","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2015-9-20","startMinute":870,"endMinute":900,"createDate":"2015-09-20 14:06:00","_id":"YBSjH1G7i204b3YE"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:37:05","_id":"YKH4NoExJmUzp4d3"}
@@ -42,10 +45,12 @@
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:13:08","_id":"ms5pohRvQUHEi74C"}
 {"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-4","startMinute":660,"endMinute":719,"createDate":"2015-08-03 21:08:31","_id":"nggbqep8zEi6fshs"}
 {"userId":"EPUHhwbo3VqjVsrp","userName":"absd","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-9-20","startMinute":960,"endMinute":1050,"createDate":"2015-09-20 14:59:18","_id":"om7YcKLUbru7lubZ"}
+{"userId":"NfBCZAeVg1pyvPXw","userName":"ent","ip":"::ffff:192.168.1.107","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2016-02-13","startMinute":540,"endMinute":660,"comment":"","createDate":"2016-01-12 22:03:39","_id":"pU45lfprjeHa9BaT"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:40:03","_id":"poUYMLVxljCHhKv8"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:28:21","_id":"ppMoqEWa6gTy1WB5"}
 {"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2015-9-5","startMinute":960,"endMinute":1019,"createDate":"2015-09-05 14:42:59","_id":"qx8JxPxq4JQPaWIT"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:17:50","_id":"r1dZoQPUNt2XsZRH"}
+{"userId":"NfBCZAeVg1pyvPXw","userName":"ent","ip":"::ffff:192.168.1.107","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2016-03-26","startMinute":570,"endMinute":690,"comment":"","createDate":"2016-03-25 21:25:36","_id":"tNR1jU7mpDwF6qwO"}
 {"userId":"98qEEs6tDrpF9JdD","userName":"amy.lin","ip":"::1","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2015-9-21","startMinute":1080,"endMinute":1140,"createDate":"2015-09-20 17:41:59","_id":"uKl7nLmGgcwg1s8W"}
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-2","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:22:38","_id":"uaeTRi0JYv4kZ67H"}
 {"userId":"ufZv2MQhqHf4Lbqr","userName":"b","ip":"::1","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2015-8-11","startMinute":600,"endMinute":659,"createDate":"2015-08-10 22:47:21","_id":"vgpZ52vLl03KIwby"}
@@ -54,3 +59,6 @@
 {"userName":"bowen","ip":"::1","roomName":"402","date":"2015-8-1","startMinute":100,"endMinute":200,"createDate":"2015-08-02 11:33:57","_id":"xEJiFP3yWmVqDf3F"}
 {"userId":"kV58hrqZAFyr8gkD","userName":"bowen","ip":"::1","roomId":"lPSe1kdRgnwWW3Gw","roomName":"401","date":"2015-9-19","startMinute":720,"endMinute":750,"createDate":"2015-09-20 11:42:50","_id":"zF1U41EQaLQaE60E"}
 {"$$indexCreated":{"fieldName":"date","unique":false,"sparse":false}}
+{"userId":"cTrlEnn24clshyGS","userName":"bobz","ip":"::ffff:192.168.1.107","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2018-04-23","startMinute":540,"endMinute":630,"comment":"","createDate":"2018-04-21 17:14:07","_id":"96sUIM4a0LviBDLF"}
+{"userId":"cTrlEnn24clshyGS","userName":"bobz","ip":"::ffff:192.168.1.107","roomId":"UXIQlas8hCFu9uVK","roomName":"402","date":"2018-04-23","startMinute":1020,"endMinute":1050,"comment":"","createDate":"2018-04-21 17:14:24","_id":"0T4JaFPHx3sXfJVD"}
+{"userId":"cTrlEnn24clshyGS","userName":"bobz","ip":"::ffff:192.168.1.107","roomId":"hLtEvNDKO0Qi4tnk","roomName":"505","date":"2018-04-23","startMinute":930,"endMinute":990,"comment":"","createDate":"2018-04-21 17:14:32","_id":"i0TSQ01Cwmj0iwKT"}
